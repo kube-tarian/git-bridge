@@ -5,12 +5,13 @@ import (
 	"fmt"
 	"log"
 
-	"agent/models"
+	"github.com/kube-tarian/git-bridge/models"
 	"github.com/nats-io/nats.go"
 )
 
 type jsModel struct {
-	js nats.JetStreamContext
+	js           nats.JetStreamContext
+	eventSubject string
 }
 
 type Models struct {
@@ -18,10 +19,11 @@ type Models struct {
 }
 
 //NewModels returns a nats js pool
-func NewModels(js nats.JetStreamContext) Models {
+func NewModels(js nats.JetStreamContext, subject string) Models {
 	return Models{
 		JS: jsModel{
-			js: js,
+			js:           js,
+			eventSubject: subject,
 		},
 	}
 }
@@ -29,10 +31,10 @@ func NewModels(js nats.JetStreamContext) Models {
 //GitPublish method gets the composed data and marshal it and publish it to the Nats jetstream
 func (m *jsModel) GitPublish(d *models.Gitevent) {
 	metricsJson, _ := json.Marshal(d)
-	_, err := m.js.Publish("GITMETRICS.bridge", metricsJson)
+	_, err := m.js.Publish(m.eventSubject, metricsJson)
 	if err != nil {
 		panic(err)
 	}
 	fmt.Println(string(metricsJson))
-	log.Printf("Metrics with eventSubject:%s has been published\n", "GITMETRICS.bridge")
+	log.Printf("Metrics with eventSubject:%s has been published\n", m.eventSubject)
 }

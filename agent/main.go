@@ -1,14 +1,13 @@
 package main
 
 import (
-	"flag"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
 	"time"
 
-	"agent/publish"
+	"github.com/kube-tarian/git-bridge/publish"
 
 	"github.com/nats-io/nats.go"
 )
@@ -42,16 +41,16 @@ type application struct {
 }
 
 func main() {
-	var cfg config
-	flag.IntVar(&cfg.port, "port", 5001, "Server port to listen on")
-	flag.StringVar(&cfg.nats, "natsurl", natsurl, "nats connection url")
-	flag.StringVar(&cfg.natstoken, "token", token, "nats token")
-	flag.Parse()
+	cfg := config{
+		port:      5001,
+		nats:      natsurl,
+		natstoken: token,
+	}
 
 	js := openJS(cfg)
 	app := &application{
 		config:  cfg,
-		publish: publish.NewModels(js),
+		publish: publish.NewModels(js, eventSubject),
 	}
 	srv := &http.Server{
 		Addr:         fmt.Sprintf(":%d", cfg.port),

@@ -5,10 +5,10 @@ import (
 
 	"net/http"
 
-	"agent/azure"
-	"agent/bitbucket"
-	"agent/github"
-	"agent/gitlab"
+	"github.com/kube-tarian/git-bridge/azure"
+	"github.com/kube-tarian/git-bridge/bitbucket"
+	"github.com/kube-tarian/git-bridge/github"
+	"github.com/kube-tarian/git-bridge/gitlab"
 )
 
 func (app *application) azureHandler(w http.ResponseWriter, r *http.Request) {

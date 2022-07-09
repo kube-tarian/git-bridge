@@ -1,10 +1,9 @@
-module agent
+module github.com/kube-tarian/git-bridge
 
 go 1.18
 
 require (
 	github.com/google/uuid v1.3.0
-	github.com/joho/godotenv v1.4.0
 	github.com/julienschmidt/httprouter v1.3.0
 	github.com/nats-io/nats.go v1.16.0
 )

@@ -1,7 +1,7 @@
 package clickhouse
 
 import (
-	"client/models"
+	"github.com/kube-tarian/git-bridge/models"
 
 	"gorm.io/driver/clickhouse"
 	"gorm.io/gorm"

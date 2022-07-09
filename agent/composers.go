@@ -6,12 +6,12 @@ import (
 	"strings"
 	"time"
 
-	"agent/azure"
-	"agent/bitbucket"
-	"agent/github"
-	"agent/gitlab"
-	"agent/models"
 	"github.com/google/uuid"
+	"github.com/kube-tarian/git-bridge/azure"
+	"github.com/kube-tarian/git-bridge/bitbucket"
+	"github.com/kube-tarian/git-bridge/github"
+	"github.com/kube-tarian/git-bridge/gitlab"
+	"github.com/kube-tarian/git-bridge/models"
 )
 
 //gitdatas is an identifier for the gitevent model
