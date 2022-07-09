@@ -5,10 +5,43 @@ import (
 
 	"net/http"
 
-	"github.com/vijeyash1/gitevent/bitbucket"
-	"github.com/vijeyash1/gitevent/github"
-	"github.com/vijeyash1/gitevent/gitlab"
+	"agent/azure"
+	"agent/bitbucket"
+	"agent/github"
+	"agent/gitlab"
 )
+
+func (app *application) azureHandler(w http.ResponseWriter, r *http.Request) {
+	event := r.Header.Get("X-Azure-Event")
+	if event == "" {
+		log.Println("ErrMissingGithubEventHeader")
+	}
+	hook, _ := azure.New()
+	payload, err := hook.Parse(r, azure.PushPayloadEvent, azure.PullRequestCommentEvent, azure.PullRequestCreatedEvent, azure.PullRequestMergeAttemptedEvent)
+	if err != nil {
+		if err == azure.ErrEventNotFound {
+			log.Print("Error This Event is not Supported")
+		}
+	}
+	switch value := payload.(type) {
+	case azure.PushPayload:
+		release := value
+		composed := gitComposer(release, event)
+		app.publish.JS.GitPublish(composed)
+	case azure.PullRequestCreated:
+		release := value
+		composed := gitComposer(release, event)
+		app.publish.JS.GitPublish(composed)
+	case azure.PullRequestCommentedOn:
+		release := value
+		composed := gitComposer(release, event)
+		app.publish.JS.GitPublish(composed)
+	case azure.PullRequestMergeAttempted:
+		release := value
+		composed := gitComposer(release, event)
+		app.publish.JS.GitPublish(composed)
+	}
+}
 
 //githubHandler handles the github webhooks post requests.
 func (app *application) githubHandler(w http.ResponseWriter, r *http.Request) {

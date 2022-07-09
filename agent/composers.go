@@ -6,11 +6,12 @@ import (
 	"strings"
 	"time"
 
+	"agent/azure"
+	"agent/bitbucket"
+	"agent/github"
+	"agent/gitlab"
+	"agent/models"
 	"github.com/google/uuid"
-	"github.com/vijeyash1/gitevent/bitbucket"
-	"github.com/vijeyash1/gitevent/github"
-	"github.com/vijeyash1/gitevent/gitlab"
-	"github.com/vijeyash1/gitevent/models"
 )
 
 //gitdatas is an identifier for the gitevent model
@@ -20,7 +21,7 @@ var gitdatas models.Gitevent
 //gitComposer checks the payload type and extracts the data from the payload and
 //compose it into the gitdatas identifier and returns it
 func gitComposer(release interface{}, event string) *models.Gitevent {
-	uuid := uuid.New()
+	uuid := uuid.New().String()
 
 	// here we are using the type assersion. release.(type) will return
 	//the type and assingns it to the identifier v
@@ -208,6 +209,30 @@ func gitComposer(release interface{}, event string) *models.Gitevent {
 		gitdatas.Removedfiles = checkData(removedFilesString)
 
 		gitdatas.Message = v.PullRequest.Description
+
+	case azure.PushPayload:
+		gitdatas.Uuid = uuid
+		gitdatas.Url = v.Resource.Repository.RemoteURL
+		gitdatas.Event = v.EventType
+		gitdatas.Eventid = v.ID
+		gitdatas.Authorname = v.Resource.Commits[0].Author.Name
+		gitdatas.Authormail = v.Resource.Commits[0].Author.Email
+		gitdatas.DoneAt = v.Resource.Commits[0].Author.Date.String()
+		gitdatas.Repository = v.Resource.Repository.Name
+		gitdatas.Branch = v.Resource.Repository.DefaultBranch
+		addedFilesSlice := ""
+		addedFilesString := addedFilesSlice
+		gitdatas.Addedfiles = checkData(addedFilesString)
+
+		modifiedFilesSlice := ""
+		modifiedFilesString := modifiedFilesSlice
+		gitdatas.Modifiedfiles = checkData(modifiedFilesString)
+
+		removedFilesSlice := ""
+		removedFilesString := removedFilesSlice
+		gitdatas.Removedfiles = checkData(removedFilesString)
+
+		gitdatas.Message = v.Resource.Commits[0].Comment
 
 	}
 	return &gitdatas

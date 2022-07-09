@@ -12,6 +12,6 @@ func (app *application) routes() *httprouter.Router {
 	router.HandlerFunc(http.MethodPost, "/github", app.githubHandler)
 	router.HandlerFunc(http.MethodPost, "/gitlab", app.gitlabHandler)
 	router.HandlerFunc(http.MethodPost, "/bitbucket", app.bitBucketHandler)
-
+	router.HandlerFunc(http.MethodPost, "/azure", app.azureHandler)
 	return router
 }

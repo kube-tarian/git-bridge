@@ -8,9 +8,14 @@ import (
 	"os"
 	"time"
 
-	"github.com/vijeyash1/gitevent/publish"
+	"agent/publish"
 
 	"github.com/nats-io/nats.go"
+)
+
+var (
+	token   string = os.Getenv("NATS_TOKEN")
+	natsurl string = os.Getenv("NATS_ADDRESS")
 )
 
 //constant variables to use with nats stream and
@@ -21,11 +26,8 @@ const (
 	eventSubject   = "GITMETRICS.git"
 )
 
-//to read the token from env variables
-var (
-	token   = os.Getenv("NATS_TOKEN")   //"UfmrJOYwYCCsgQvxvcfJ3BdI6c8WBbnD"
-	natsurl = os.Getenv("NATS_ADDRESS") //"nats://localhost:4222"
-)
+// var token string = "UfmrJOYwYCCsgQvxvcfJ3BdI6c8WBbnD"
+// var natsurl string = "nats://localhost:4222"
 
 //config will have the configuration details
 type config struct {
@@ -41,7 +43,7 @@ type application struct {
 
 func main() {
 	var cfg config
-	flag.IntVar(&cfg.port, "port", 8000, "Server port to listen on")
+	flag.IntVar(&cfg.port, "port", 5001, "Server port to listen on")
 	flag.StringVar(&cfg.nats, "natsurl", natsurl, "nats connection url")
 	flag.StringVar(&cfg.natstoken, "token", token, "nats token")
 	flag.Parse()
@@ -65,13 +67,25 @@ func main() {
 	}
 }
 func openJS(cfg config) nats.JetStreamContext {
+
 	// Connect to NATS
-	nc, err := nats.Connect(cfg.nats, nats.Name("Github metrics"), nats.Token(cfg.natstoken))
+	var sc *nats.Conn
+	var err error
+	for i := 0; i < 5; i++ {
+		nc, err := nats.Connect(natsurl, nats.Name("Github metrics"), nats.Token(token))
+		if err == nil {
+			sc = nc
+			break
+		}
+
+		fmt.Println("Waiting before connecting to NATS at:", natsurl)
+		time.Sleep(1 * time.Second)
+	}
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal("Error establishing connection to NATS:", err)
 	}
 	// Creates JetStreamContext
-	js, err := nc.JetStream()
+	js, err := sc.JetStream()
 	if err != nil {
 		log.Fatal(err)
 	}
