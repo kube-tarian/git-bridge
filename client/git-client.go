@@ -15,12 +15,13 @@ import (
 )
 
 var (
-	eventSubject string = "GITMETRICS.git"
-	token        string = os.Getenv("NATS_TOKEN")
-	natsurl      string = os.Getenv("NATS_ADDRESS")
-	dbAdress     string = os.Getenv("DB_ADDRESS")
-	dbPort       string = os.Getenv("DB_PORT")
-	url          string = fmt.Sprintf("tcp://%s:%s?debug=true", dbAdress, dbPort)
+	eventSubject  string = "GITMETRICS.git"
+	eventConsumer string = "Git-Consumer"
+	token         string = os.Getenv("NATS_TOKEN")
+	natsurl       string = os.Getenv("NATS_ADDRESS")
+	dbAdress      string = os.Getenv("DB_ADDRESS")
+	dbPort        string = os.Getenv("DB_PORT")
+	url           string = fmt.Sprintf("tcp://%s:%s?debug=true", dbAdress, dbPort)
 )
 
 type config struct {
@@ -48,7 +49,7 @@ func main() {
 	js := cfg.openJS()
 	log.Print(js)
 	pool := NewJsPool(js)
-	pool.gitSubscriber(eventSubject)
+	pool.gitSubscriber(eventSubject, eventConsumer)
 	stream, err := js.StreamInfo("GITMETRICS")
 	checkErr(err)
 	log.Println(stream)
@@ -91,7 +92,7 @@ func (c config) openJS() nats.JetStreamContext {
 
 }
 
-func (c jsPool) gitSubscriber(subject string) {
+func (c jsPool) gitSubscriber(subject string, consumer string) {
 	c.js.Subscribe(subject, func(msg *nats.Msg) {
 		msg.Ack()
 		var metrics models.Gitevent
@@ -102,6 +103,6 @@ func (c jsPool) gitSubscriber(subject string) {
 		//Get clickhouse connection and insert event
 		clickhouse.InsertEvent(url, metrics)
 
-	}, nats.Durable("GIT_CONSUMER"), nats.ManualAck())
+	}, nats.Durable(consumer), nats.ManualAck())
 
 }
