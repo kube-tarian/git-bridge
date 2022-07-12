@@ -258,6 +258,55 @@ func gitComposer(release interface{}, event string) *models.Gitevent {
 
 		gitdatas.Message = v.Message.Text
 
+	case azure.PullRequestCommentedOnPayload:
+		gitdatas.Uuid = uuid
+		gitdatas.Url = v.Resource.Links.Repository.Href
+		gitdatas.Event = v.EventType
+		gitdatas.Eventid = v.ID
+		gitdatas.Authorname = v.Resource.Author.DisplayName
+		gitdatas.Authormail = v.Resource.Author.UniqueName
+		gitdatas.DoneAt = v.Resource.LastUpdatedDate.String()
+		gitdatas.Repository = "---"
+		gitdatas.Branch = "---"
+		addedFilesSlice := ""
+		addedFilesString := addedFilesSlice
+		gitdatas.Addedfiles = checkData(addedFilesString)
+
+		modifiedFilesSlice := ""
+		modifiedFilesString := modifiedFilesSlice
+		gitdatas.Modifiedfiles = checkData(modifiedFilesString)
+
+		removedFilesSlice := ""
+		removedFilesString := removedFilesSlice
+		gitdatas.Removedfiles = checkData(removedFilesString)
+
+		gitdatas.Message = fmt.Sprintf("Comment : %v", v.Resource.Content)
+
+	case azure.PullRequestMergeAttemptedPayload:
+
+		gitdatas.Uuid = uuid
+		gitdatas.Url = v.Resource.Repository.RemoteURL
+		gitdatas.Event = v.EventType
+		gitdatas.Eventid = v.ID
+		gitdatas.Authorname = v.Message.Text
+		gitdatas.Authormail = v.Resource.Repository.URL
+		gitdatas.DoneAt = v.Resource.CreationDate.String()
+		gitdatas.Repository = v.Resource.Repository.Name
+		gitdatas.Branch = v.Resource.Repository.DefaultBranch
+		addedFilesSlice := ""
+		addedFilesString := addedFilesSlice
+		gitdatas.Addedfiles = checkData(addedFilesString)
+
+		modifiedFilesSlice := ""
+		modifiedFilesString := modifiedFilesSlice
+		gitdatas.Modifiedfiles = checkData(modifiedFilesString)
+
+		removedFilesSlice := ""
+		removedFilesString := removedFilesSlice
+		gitdatas.Removedfiles = checkData(removedFilesString)
+
+		gitdatas.Message = v.Message.Text
+
 	}
 	return &gitdatas
 }

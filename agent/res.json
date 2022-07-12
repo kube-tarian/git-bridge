@@ -1,0 +1,51 @@
+{
+  "subscriptionId": "00000000-0000-0000-0000-000000000000",
+  "notificationId": 8,
+  "id": "af07be1b-f3ad-44c8-a7f1-c4835f2df06b",
+  "eventType": "ms.vss-code.git-pullrequest-comment-event",
+  "publisherId": "tfs",
+  "message": {
+    "text": "Jamal Hartnett has edited a pull request comment",
+    "html": "Jamal Hartnett has <a href=\"https://fabrikam.visualstudio.com/DefaultCollection/_git/Fabrikam/pullrequest/1?discussionId=5\">edited</a> a pull request comment",
+    "markdown": "Jamal Hartnett has [edited](https://fabrikam.visualstudio.com/DefaultCollection/_git/Fabrikam/pullrequest/1?discussionId=5) a pull request comment"
+  },
+  "detailedMessage": {
+    "text": "Jamal Hartnett has edited a pull request comment\r\nThis is my comment.\r\n",
+    "html": "Jamal Hartnett has <a href=\"https://fabrikam.visualstudio.com/DefaultCollection/_git/Fabrikam/pullrequest/1?discussionId=5\">edited</a> a pull request comment<p>This is my comment.</p>",
+    "markdown": "Jamal Hartnett has [edited](https://fabrikam.visualstudio.com/DefaultCollection/_git/Fabrikam/pullrequest/1?discussionId=5) a pull request comment\r\nThis is my comment.\r\n"
+  },
+  "resource": {
+    "id": 2,
+    "parentCommentId": 1,
+    "author": {
+      "displayName": "Jamal Hartnett",
+      "url": "https://fabrikam.vssps.visualstudio.com/_apis/Identities/54d125f7-69f7-4191-904f-c5b96b6261c8",
+      "id": "54d125f7-69f7-4191-904f-c5b96b6261c8",
+      "uniqueName": "fabrikamfiber4@hotmail.com",
+      "imageUrl": "https://fabrikam.visualstudio.com/DefaultCollection/_api/_common/identityImage?id=54d125f7-69f7-4191-904f-c5b96b6261c8"
+    },
+    "content": "This is my comment.",
+    "publishedDate": "2014-06-17T16:55:46.589889Z",
+    "lastUpdatedDate": "2014-06-17T16:58:33.123889Z",
+    "lastContentUpdatedDate": "2014-06-17T16:58:33.123889Z",
+    "commentType": "text",
+    "_links": {
+      "self": {
+        "href": "https://fabrikam.visualstudio.com/DefaultCollection/_apis/git/repositories/4bc14d40-c903-45e2-872e-0462c7748079/pullRequests/1/threads/5/comments/2"
+      },
+      "repository": {
+        "href": "http://joscol2/DefaultCollection/ebed510c-62eb-474b-965f-fd151ebb82e4/_apis/git/repositories/4bc14d40-c903-45e2-872e-0462c7748079"
+      },
+      "threads": {
+        "href": "https://fabrikam.visualstudio.com/DefaultCollection/_apis/git/repositories/4bc14d40-c903-45e2-872e-0462c7748079/pullRequests/1/threads/5"
+      }
+    }
+  },
+  "resourceVersion": "1.0",
+  "resourceContainers": {
+    "collection": { "id": "c12d0eb8-e382-443b-9f9c-c52cba5014c2" },
+    "account": { "id": "f844ec47-a9db-4511-8281-8b63f4eaf94e" },
+    "project": { "id": "be9b3917-87e6-42a4-a549-2bc06a7a878f" }
+  },
+  "createdDate": "2022-07-07T16:17:05.6138167Z"
+}
