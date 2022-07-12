@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Jul 12 10:51:43 2022
+# Make data base, printed on Tue Jul 12 10:52:38 2022
 
 # Variables
 
@@ -33,7 +33,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
 .VARIABLES := 
 # environment
-PWD = /home/vijesh/go/src/github.com/git-bridge
+PWD = /home/vijesh/go/src/github.com/git-bridge/agent
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
@@ -53,7 +53,7 @@ LANG = C
 # makefile
 MAKEFLAGS = pqrR
 # makefile
-CURDIR := /home/vijesh/go/src/github.com/git-bridge
+CURDIR := /home/vijesh/go/src/github.com/git-bridge/agent
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # automatic
@@ -68,8 +68,8 @@ WAYLAND_DISPLAY = wayland-0
 +D = $(patsubst %/,%,$(dir $+))
 # environment
 P9K_SSH = 0
-# makefile
-MAKEFILE_LIST := 
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
@@ -117,7 +117,7 @@ LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:
 # environment
 LESS = -R
 # environment
-WSL_INTEROP = /run/WSL/19390_interop
+WSL_INTEROP = /run/WSL/20223_interop
 # 'override' directive
 GNUMAKEFLAGS := 
 # environment
@@ -125,7 +125,7 @@ LOGNAME = vijesh
 # environment
 VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/vijes/.vscode/extensions/ms-vscode-remote.remote-wsl-0.66.3
 # makefile
-.DEFAULT_GOAL := 
+.DEFAULT_GOAL := agent
 # environment
 DISPLAY = :0
 # environment
@@ -139,9 +139,8 @@ _ = /mnt/c/Users/vijes/AppData/Local/Programs/Microsoft VS Code/bin/code
 # environment
 XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-c4b93fcf-8bcc-4599-a913-53a7f66d9c8f.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-6f6dd4f3-b9d3-485e-a840-bfa7d34b286b.sock
 # environment
- 
 GOMODCACHE = /home/vijesh/go/pkg/mod
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
@@ -166,7 +165,7 @@ WSL_DISTRO_NAME = Ubuntu-20.04
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
 # variable set hash-table stats:
-# Load=76/1024=7%, Rehash=0, Collisions=1/103=1%
+# Load=76/1024=7%, Rehash=0, Collisions=1/106=1%
 
 # Pattern-specific Variable Values
 
@@ -174,9 +173,9 @@ WSL_DISTRO_NAME = Ubuntu-20.04
 
 # Directories
 
-# . (device 2112, inode 474633): 10 files, no impossibilities.
+# . (device 2112, inode 966500): 22 files, no impossibilities.
 
-# 10 files, no impossibilities in 1 directories.
+# 22 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -187,9 +186,9 @@ WSL_DISTRO_NAME = Ubuntu-20.04
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  File does not exist.
+#  Last modified 2022-07-09 16:21:08.677777906
 #  File has been updated.
-#  Failed to be updated.
+#  Successfully updated.
 
 # Not a target:
 .DEFAULT:
@@ -204,35 +203,27 @@ all:
 #  File does not exist.
 #  File has not been updated.
 
-# Not a target:
-makefile:
-#  Implicit rule search has been done.
-#  File does not exist.
-#  File has been updated.
-#  Failed to be updated.
-
-# Not a target:
-GNUmakefile:
-#  Implicit rule search has been done.
-#  File does not exist.
-#  File has been updated.
-#  Failed to be updated.
+agent:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 2):
+	export NATS_TOKEN="UfmrJOYwYCCsgQvxvcfJ3BdI6c8WBbnD" && export NATS_ADDRESS="nats://localhost:4222" && docker run -d -p 4222:4222 nats:latest -js && go run .
 
 # files hash-table stats:
-# Load=6/1024=1%, Rehash=0, Collisions=0/15=0%
+# Load=5/1024=0%, Rehash=0, Collisions=0/15=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 18 / storage = 159 B / avg = 8 B
-# current buf: size = 8162 B / used = 159 B / count = 18 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 28 / storage = 250 B / avg = 8 B
+# current buf: size = 8162 B / used = 250 B / count = 28 / avg = 8 B
 
-# strcache performance: lookups = 21 / hit rate = 14%
+# strcache performance: lookups = 33 / hit rate = 15%
 # hash-table stats:
-# Load=18/8192=0%, Rehash=0, Collisions=0/21=0%
-# Finished Make data base on Tue Jul 12 10:51:43 2022
- 
+# Load=28/8192=0%, Rehash=0, Collisions=0/33=0%
+# Finished Make data base on Tue Jul 12 10:52:38 2022
 
  

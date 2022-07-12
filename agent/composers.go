@@ -234,6 +234,30 @@ func gitComposer(release interface{}, event string) *models.Gitevent {
 
 		gitdatas.Message = v.Resource.Commits[0].Comment
 
+	case azure.PullRequestCreatedPayload:
+		gitdatas.Uuid = uuid
+		gitdatas.Url = v.Resource.Repository.RemoteURL
+		gitdatas.Event = v.EventType
+		gitdatas.Eventid = v.ID
+		gitdatas.Authorname = v.Message.Text
+		gitdatas.Authormail = v.Resource.Repository.URL
+		gitdatas.DoneAt = v.Resource.CreationDate.String()
+		gitdatas.Repository = v.Resource.Repository.Name
+		gitdatas.Branch = v.Resource.Repository.DefaultBranch
+		addedFilesSlice := ""
+		addedFilesString := addedFilesSlice
+		gitdatas.Addedfiles = checkData(addedFilesString)
+
+		modifiedFilesSlice := ""
+		modifiedFilesString := modifiedFilesSlice
+		gitdatas.Modifiedfiles = checkData(modifiedFilesString)
+
+		removedFilesSlice := ""
+		removedFilesString := removedFilesSlice
+		gitdatas.Removedfiles = checkData(removedFilesString)
+
+		gitdatas.Message = v.Message.Text
+
 	}
 	return &gitdatas
 }

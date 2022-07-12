@@ -106,7 +106,7 @@ type PushPayload struct {
 	CreatedDate time.Time `json:"createdDate"`
 }
 
-type PullRequestCreated struct {
+type PullRequestCreatedPayload struct {
 	SubscriptionID string `json:"subscriptionId"`
 	NotificationID int    `json:"notificationId"`
 	ID             string `json:"id"`
@@ -205,7 +205,7 @@ type PullRequestCreated struct {
 	CreatedDate time.Time `json:"createdDate"`
 }
 
-type PullRequestMergeAttempted struct {
+type PullRequestMergeAttemptedPayload struct {
 	SubscriptionID string `json:"subscriptionId"`
 	NotificationID int    `json:"notificationId"`
 	ID             string `json:"id"`
@@ -305,7 +305,7 @@ type PullRequestMergeAttempted struct {
 	CreatedDate time.Time `json:"createdDate"`
 }
 
-type PullRequestCommentedOn struct {
+type PullRequestCommentedOnPayload struct {
 	SubscriptionID string `json:"subscriptionId"`
 	NotificationID int    `json:"notificationId"`
 	ID             string `json:"id"`

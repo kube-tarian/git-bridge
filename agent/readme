@@ -1,1 +1,23 @@
-https://nats.io/blog/docker-compose-plus-nats/
+# features added:
+
+## github webhooks supported:
+
+- pushrequest
+- pullrequest
+- forkrequest
+
+## gitlab webhooks supported:
+
+- pushrequest
+- mergerequest
+
+## bitbucket webhooks supported:
+
+- pushrequest
+- forkrequest
+- pullrequest
+
+## azure webhooks supported:
+
+- pushrequest
+- pullrequest

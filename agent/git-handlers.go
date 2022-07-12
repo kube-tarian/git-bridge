@@ -28,15 +28,15 @@ func (app *application) azureHandler(w http.ResponseWriter, r *http.Request) {
 		release := value
 		composed := gitComposer(release, event)
 		app.publish.JS.GitPublish(composed)
-	case azure.PullRequestCreated:
+	case azure.PullRequestCreatedPayload:
 		release := value
 		composed := gitComposer(release, event)
 		app.publish.JS.GitPublish(composed)
-	case azure.PullRequestCommentedOn:
+	case azure.PullRequestCommentedOnPayload:
 		release := value
 		composed := gitComposer(release, event)
 		app.publish.JS.GitPublish(composed)
-	case azure.PullRequestMergeAttempted:
+	case azure.PullRequestMergeAttemptedPayload:
 		release := value
 		composed := gitComposer(release, event)
 		app.publish.JS.GitPublish(composed)

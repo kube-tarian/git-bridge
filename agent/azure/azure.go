@@ -137,15 +137,15 @@ func (hook Webhook) Parse(r *http.Request, events ...Event) (interface{}, error)
 		err = json.Unmarshal([]byte(payload), &pl)
 		return pl, err
 	case PullRequestCreatedEvent:
-		var pl PullRequestCreated
+		var pl PullRequestCreatedPayload
 		err = json.Unmarshal([]byte(payload), &pl)
 		return pl, err
 	case PullRequestMergeAttemptedEvent:
-		var pl PullRequestMergeAttempted
+		var pl PullRequestMergeAttemptedPayload
 		err = json.Unmarshal([]byte(payload), &pl)
 		return pl, err
 	case PullRequestCommentEvent:
-		var pl PullRequestCommentedOn
+		var pl PullRequestCommentedOnPayload
 		err = json.Unmarshal([]byte(payload), &pl)
 		return pl, err
 	default:
