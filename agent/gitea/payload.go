@@ -21,11 +21,11 @@ type PushEventPayload struct {
 			Email    string `json:"email"`
 			Username string `json:"username"`
 		} `json:"committer"`
-		Verification interface{}   `json:"verification"`
-		Timestamp    time.Time     `json:"timestamp"`
-		Added        []string      `json:"added"`
-		Removed      []interface{} `json:"removed"`
-		Modified     []interface{} `json:"modified"`
+		Verification bool      `json:"verification"`
+		Timestamp    time.Time `json:"timestamp"`
+		Added        []string  `json:"added"`
+		Removed      []string  `json:"removed"`
+		Modified     []string  `json:"modified"`
 	} `json:"commits"`
 	HeadCommit struct {
 		Id      string `json:"id"`
@@ -41,11 +41,11 @@ type PushEventPayload struct {
 			Email    string `json:"email"`
 			Username string `json:"username"`
 		} `json:"committer"`
-		Verification interface{}   `json:"verification"`
-		Timestamp    time.Time     `json:"timestamp"`
-		Added        []string      `json:"added"`
-		Removed      []interface{} `json:"removed"`
-		Modified     []interface{} `json:"modified"`
+		Verification string    `json:"verification"`
+		Timestamp    time.Time `json:"timestamp"`
+		Added        []string  `json:"added"`
+		Removed      []string  `json:"removed"`
+		Modified     []string  `json:"modified"`
 	} `json:"head_commit"`
 	Repository struct {
 		Id    int `json:"id"`
@@ -71,33 +71,33 @@ type PushEventPayload struct {
 			StarredReposCount int       `json:"starred_repos_count"`
 			Username          string    `json:"username"`
 		} `json:"owner"`
-		Name            string      `json:"name"`
-		FullName        string      `json:"full_name"`
-		Description     string      `json:"description"`
-		Empty           bool        `json:"empty"`
-		Private         bool        `json:"private"`
-		Fork            bool        `json:"fork"`
-		Template        bool        `json:"template"`
-		Parent          interface{} `json:"parent"`
-		Mirror          bool        `json:"mirror"`
-		Size            int         `json:"size"`
-		Language        string      `json:"language"`
-		LanguagesUrl    string      `json:"languages_url"`
-		HtmlUrl         string      `json:"html_url"`
-		SshUrl          string      `json:"ssh_url"`
-		CloneUrl        string      `json:"clone_url"`
-		OriginalUrl     string      `json:"original_url"`
-		Website         string      `json:"website"`
-		StarsCount      int         `json:"stars_count"`
-		ForksCount      int         `json:"forks_count"`
-		WatchersCount   int         `json:"watchers_count"`
-		OpenIssuesCount int         `json:"open_issues_count"`
-		OpenPrCounter   int         `json:"open_pr_counter"`
-		ReleaseCounter  int         `json:"release_counter"`
-		DefaultBranch   string      `json:"default_branch"`
-		Archived        bool        `json:"archived"`
-		CreatedAt       time.Time   `json:"created_at"`
-		UpdatedAt       time.Time   `json:"updated_at"`
+		Name            string    `json:"name"`
+		FullName        string    `json:"full_name"`
+		Description     string    `json:"description"`
+		Empty           bool      `json:"empty"`
+		Private         bool      `json:"private"`
+		Fork            bool      `json:"fork"`
+		Template        bool      `json:"template"`
+		Parent          bool      `json:"parent"`
+		Mirror          bool      `json:"mirror"`
+		Size            int       `json:"size"`
+		Language        string    `json:"language"`
+		LanguagesUrl    string    `json:"languages_url"`
+		HtmlUrl         string    `json:"html_url"`
+		SshUrl          string    `json:"ssh_url"`
+		CloneUrl        string    `json:"clone_url"`
+		OriginalUrl     string    `json:"original_url"`
+		Website         string    `json:"website"`
+		StarsCount      int       `json:"stars_count"`
+		ForksCount      int       `json:"forks_count"`
+		WatchersCount   int       `json:"watchers_count"`
+		OpenIssuesCount int       `json:"open_issues_count"`
+		OpenPrCounter   int       `json:"open_pr_counter"`
+		ReleaseCounter  int       `json:"release_counter"`
+		DefaultBranch   string    `json:"default_branch"`
+		Archived        bool      `json:"archived"`
+		CreatedAt       time.Time `json:"created_at"`
+		UpdatedAt       time.Time `json:"updated_at"`
 		Permissions     struct {
 			Admin bool `json:"admin"`
 			Push  bool `json:"push"`
@@ -109,20 +109,20 @@ type PushEventPayload struct {
 			AllowOnlyContributorsToTrackTime bool `json:"allow_only_contributors_to_track_time"`
 			EnableIssueDependencies          bool `json:"enable_issue_dependencies"`
 		} `json:"internal_tracker"`
-		HasWiki                   bool        `json:"has_wiki"`
-		HasPullRequests           bool        `json:"has_pull_requests"`
-		HasProjects               bool        `json:"has_projects"`
-		IgnoreWhitespaceConflicts bool        `json:"ignore_whitespace_conflicts"`
-		AllowMergeCommits         bool        `json:"allow_merge_commits"`
-		AllowRebase               bool        `json:"allow_rebase"`
-		AllowRebaseExplicit       bool        `json:"allow_rebase_explicit"`
-		AllowSquashMerge          bool        `json:"allow_squash_merge"`
-		DefaultMergeStyle         string      `json:"default_merge_style"`
-		AvatarUrl                 string      `json:"avatar_url"`
-		Internal                  bool        `json:"internal"`
-		MirrorInterval            string      `json:"mirror_interval"`
-		MirrorUpdated             time.Time   `json:"mirror_updated"`
-		RepoTransfer              interface{} `json:"repo_transfer"`
+		HasWiki                   bool      `json:"has_wiki"`
+		HasPullRequests           bool      `json:"has_pull_requests"`
+		HasProjects               bool      `json:"has_projects"`
+		IgnoreWhitespaceConflicts bool      `json:"ignore_whitespace_conflicts"`
+		AllowMergeCommits         bool      `json:"allow_merge_commits"`
+		AllowRebase               bool      `json:"allow_rebase"`
+		AllowRebaseExplicit       bool      `json:"allow_rebase_explicit"`
+		AllowSquashMerge          bool      `json:"allow_squash_merge"`
+		DefaultMergeStyle         string    `json:"default_merge_style"`
+		AvatarUrl                 string    `json:"avatar_url"`
+		Internal                  bool      `json:"internal"`
+		MirrorInterval            string    `json:"mirror_interval"`
+		MirrorUpdated             time.Time `json:"mirror_updated"`
+		RepoTransfer              bool      `json:"repo_transfer"`
 	} `json:"repository"`
 	Pusher struct {
 		Id                int       `json:"id"`
@@ -195,33 +195,33 @@ type ForkEventPayload struct {
 			StarredReposCount int       `json:"starred_repos_count"`
 			Username          string    `json:"username"`
 		} `json:"owner"`
-		Name            string      `json:"name"`
-		FullName        string      `json:"full_name"`
-		Description     string      `json:"description"`
-		Empty           bool        `json:"empty"`
-		Private         bool        `json:"private"`
-		Fork            bool        `json:"fork"`
-		Template        bool        `json:"template"`
-		Parent          interface{} `json:"parent"`
-		Mirror          bool        `json:"mirror"`
-		Size            int         `json:"size"`
-		Language        string      `json:"language"`
-		LanguagesUrl    string      `json:"languages_url"`
-		HtmlUrl         string      `json:"html_url"`
-		SshUrl          string      `json:"ssh_url"`
-		CloneUrl        string      `json:"clone_url"`
-		OriginalUrl     string      `json:"original_url"`
-		Website         string      `json:"website"`
-		StarsCount      int         `json:"stars_count"`
-		ForksCount      int         `json:"forks_count"`
-		WatchersCount   int         `json:"watchers_count"`
-		OpenIssuesCount int         `json:"open_issues_count"`
-		OpenPrCounter   int         `json:"open_pr_counter"`
-		ReleaseCounter  int         `json:"release_counter"`
-		DefaultBranch   string      `json:"default_branch"`
-		Archived        bool        `json:"archived"`
-		CreatedAt       time.Time   `json:"created_at"`
-		UpdatedAt       time.Time   `json:"updated_at"`
+		Name            string    `json:"name"`
+		FullName        string    `json:"full_name"`
+		Description     string    `json:"description"`
+		Empty           bool      `json:"empty"`
+		Private         bool      `json:"private"`
+		Fork            bool      `json:"fork"`
+		Template        bool      `json:"template"`
+		Parent          bool      `json:"parent"`
+		Mirror          bool      `json:"mirror"`
+		Size            int       `json:"size"`
+		Language        string    `json:"language"`
+		LanguagesUrl    string    `json:"languages_url"`
+		HtmlUrl         string    `json:"html_url"`
+		SshUrl          string    `json:"ssh_url"`
+		CloneUrl        string    `json:"clone_url"`
+		OriginalUrl     string    `json:"original_url"`
+		Website         string    `json:"website"`
+		StarsCount      int       `json:"stars_count"`
+		ForksCount      int       `json:"forks_count"`
+		WatchersCount   int       `json:"watchers_count"`
+		OpenIssuesCount int       `json:"open_issues_count"`
+		OpenPrCounter   int       `json:"open_pr_counter"`
+		ReleaseCounter  int       `json:"release_counter"`
+		DefaultBranch   string    `json:"default_branch"`
+		Archived        bool      `json:"archived"`
+		CreatedAt       time.Time `json:"created_at"`
+		UpdatedAt       time.Time `json:"updated_at"`
 		Permissions     struct {
 			Admin bool `json:"admin"`
 			Push  bool `json:"push"`
@@ -233,20 +233,20 @@ type ForkEventPayload struct {
 			AllowOnlyContributorsToTrackTime bool `json:"allow_only_contributors_to_track_time"`
 			EnableIssueDependencies          bool `json:"enable_issue_dependencies"`
 		} `json:"internal_tracker"`
-		HasWiki                   bool        `json:"has_wiki"`
-		HasPullRequests           bool        `json:"has_pull_requests"`
-		HasProjects               bool        `json:"has_projects"`
-		IgnoreWhitespaceConflicts bool        `json:"ignore_whitespace_conflicts"`
-		AllowMergeCommits         bool        `json:"allow_merge_commits"`
-		AllowRebase               bool        `json:"allow_rebase"`
-		AllowRebaseExplicit       bool        `json:"allow_rebase_explicit"`
-		AllowSquashMerge          bool        `json:"allow_squash_merge"`
-		DefaultMergeStyle         string      `json:"default_merge_style"`
-		AvatarUrl                 string      `json:"avatar_url"`
-		Internal                  bool        `json:"internal"`
-		MirrorInterval            string      `json:"mirror_interval"`
-		MirrorUpdated             time.Time   `json:"mirror_updated"`
-		RepoTransfer              interface{} `json:"repo_transfer"`
+		HasWiki                   bool      `json:"has_wiki"`
+		HasPullRequests           bool      `json:"has_pull_requests"`
+		HasProjects               bool      `json:"has_projects"`
+		IgnoreWhitespaceConflicts bool      `json:"ignore_whitespace_conflicts"`
+		AllowMergeCommits         bool      `json:"allow_merge_commits"`
+		AllowRebase               bool      `json:"allow_rebase"`
+		AllowRebaseExplicit       bool      `json:"allow_rebase_explicit"`
+		AllowSquashMerge          bool      `json:"allow_squash_merge"`
+		DefaultMergeStyle         string    `json:"default_merge_style"`
+		AvatarUrl                 string    `json:"avatar_url"`
+		Internal                  bool      `json:"internal"`
+		MirrorInterval            string    `json:"mirror_interval"`
+		MirrorUpdated             time.Time `json:"mirror_updated"`
+		RepoTransfer              bool      `json:"repo_transfer"`
 	} `json:"forkee"`
 	Repository struct {
 		Id    int `json:"id"`
@@ -303,33 +303,33 @@ type ForkEventPayload struct {
 				StarredReposCount int       `json:"starred_repos_count"`
 				Username          string    `json:"username"`
 			} `json:"owner"`
-			Name            string      `json:"name"`
-			FullName        string      `json:"full_name"`
-			Description     string      `json:"description"`
-			Empty           bool        `json:"empty"`
-			Private         bool        `json:"private"`
-			Fork            bool        `json:"fork"`
-			Template        bool        `json:"template"`
-			Parent          interface{} `json:"parent"`
-			Mirror          bool        `json:"mirror"`
-			Size            int         `json:"size"`
-			Language        string      `json:"language"`
-			LanguagesUrl    string      `json:"languages_url"`
-			HtmlUrl         string      `json:"html_url"`
-			SshUrl          string      `json:"ssh_url"`
-			CloneUrl        string      `json:"clone_url"`
-			OriginalUrl     string      `json:"original_url"`
-			Website         string      `json:"website"`
-			StarsCount      int         `json:"stars_count"`
-			ForksCount      int         `json:"forks_count"`
-			WatchersCount   int         `json:"watchers_count"`
-			OpenIssuesCount int         `json:"open_issues_count"`
-			OpenPrCounter   int         `json:"open_pr_counter"`
-			ReleaseCounter  int         `json:"release_counter"`
-			DefaultBranch   string      `json:"default_branch"`
-			Archived        bool        `json:"archived"`
-			CreatedAt       time.Time   `json:"created_at"`
-			UpdatedAt       time.Time   `json:"updated_at"`
+			Name            string    `json:"name"`
+			FullName        string    `json:"full_name"`
+			Description     string    `json:"description"`
+			Empty           bool      `json:"empty"`
+			Private         bool      `json:"private"`
+			Fork            bool      `json:"fork"`
+			Template        bool      `json:"template"`
+			Parent          bool      `json:"parent"`
+			Mirror          bool      `json:"mirror"`
+			Size            int       `json:"size"`
+			Language        string    `json:"language"`
+			LanguagesUrl    string    `json:"languages_url"`
+			HtmlUrl         string    `json:"html_url"`
+			SshUrl          string    `json:"ssh_url"`
+			CloneUrl        string    `json:"clone_url"`
+			OriginalUrl     string    `json:"original_url"`
+			Website         string    `json:"website"`
+			StarsCount      int       `json:"stars_count"`
+			ForksCount      int       `json:"forks_count"`
+			WatchersCount   int       `json:"watchers_count"`
+			OpenIssuesCount int       `json:"open_issues_count"`
+			OpenPrCounter   int       `json:"open_pr_counter"`
+			ReleaseCounter  int       `json:"release_counter"`
+			DefaultBranch   string    `json:"default_branch"`
+			Archived        bool      `json:"archived"`
+			CreatedAt       time.Time `json:"created_at"`
+			UpdatedAt       time.Time `json:"updated_at"`
 			Permissions     struct {
 				Admin bool `json:"admin"`
 				Push  bool `json:"push"`
@@ -341,20 +341,20 @@ type ForkEventPayload struct {
 				AllowOnlyContributorsToTrackTime bool `json:"allow_only_contributors_to_track_time"`
 				EnableIssueDependencies          bool `json:"enable_issue_dependencies"`
 			} `json:"internal_tracker"`
-			HasWiki                   bool        `json:"has_wiki"`
-			HasPullRequests           bool        `json:"has_pull_requests"`
-			HasProjects               bool        `json:"has_projects"`
-			IgnoreWhitespaceConflicts bool        `json:"ignore_whitespace_conflicts"`
-			AllowMergeCommits         bool        `json:"allow_merge_commits"`
-			AllowRebase               bool        `json:"allow_rebase"`
-			AllowRebaseExplicit       bool        `json:"allow_rebase_explicit"`
-			AllowSquashMerge          bool        `json:"allow_squash_merge"`
-			DefaultMergeStyle         string      `json:"default_merge_style"`
-			AvatarUrl                 string      `json:"avatar_url"`
-			Internal                  bool        `json:"internal"`
-			MirrorInterval            string      `json:"mirror_interval"`
-			MirrorUpdated             time.Time   `json:"mirror_updated"`
-			RepoTransfer              interface{} `json:"repo_transfer"`
+			HasWiki                   bool      `json:"has_wiki"`
+			HasPullRequests           bool      `json:"has_pull_requests"`
+			HasProjects               bool      `json:"has_projects"`
+			IgnoreWhitespaceConflicts bool      `json:"ignore_whitespace_conflicts"`
+			AllowMergeCommits         bool      `json:"allow_merge_commits"`
+			AllowRebase               bool      `json:"allow_rebase"`
+			AllowRebaseExplicit       bool      `json:"allow_rebase_explicit"`
+			AllowSquashMerge          bool      `json:"allow_squash_merge"`
+			DefaultMergeStyle         string    `json:"default_merge_style"`
+			AvatarUrl                 string    `json:"avatar_url"`
+			Internal                  bool      `json:"internal"`
+			MirrorInterval            string    `json:"mirror_interval"`
+			MirrorUpdated             time.Time `json:"mirror_updated"`
+			RepoTransfer              bool      `json:"repo_transfer"`
 		} `json:"parent"`
 		Mirror          bool      `json:"mirror"`
 		Size            int       `json:"size"`
@@ -386,20 +386,20 @@ type ForkEventPayload struct {
 			AllowOnlyContributorsToTrackTime bool `json:"allow_only_contributors_to_track_time"`
 			EnableIssueDependencies          bool `json:"enable_issue_dependencies"`
 		} `json:"internal_tracker"`
-		HasWiki                   bool        `json:"has_wiki"`
-		HasPullRequests           bool        `json:"has_pull_requests"`
-		HasProjects               bool        `json:"has_projects"`
-		IgnoreWhitespaceConflicts bool        `json:"ignore_whitespace_conflicts"`
-		AllowMergeCommits         bool        `json:"allow_merge_commits"`
-		AllowRebase               bool        `json:"allow_rebase"`
-		AllowRebaseExplicit       bool        `json:"allow_rebase_explicit"`
-		AllowSquashMerge          bool        `json:"allow_squash_merge"`
-		DefaultMergeStyle         string      `json:"default_merge_style"`
-		AvatarUrl                 string      `json:"avatar_url"`
-		Internal                  bool        `json:"internal"`
-		MirrorInterval            string      `json:"mirror_interval"`
-		MirrorUpdated             time.Time   `json:"mirror_updated"`
-		RepoTransfer              interface{} `json:"repo_transfer"`
+		HasWiki                   bool      `json:"has_wiki"`
+		HasPullRequests           bool      `json:"has_pull_requests"`
+		HasProjects               bool      `json:"has_projects"`
+		IgnoreWhitespaceConflicts bool      `json:"ignore_whitespace_conflicts"`
+		AllowMergeCommits         bool      `json:"allow_merge_commits"`
+		AllowRebase               bool      `json:"allow_rebase"`
+		AllowRebaseExplicit       bool      `json:"allow_rebase_explicit"`
+		AllowSquashMerge          bool      `json:"allow_squash_merge"`
+		DefaultMergeStyle         string    `json:"default_merge_style"`
+		AvatarUrl                 string    `json:"avatar_url"`
+		Internal                  bool      `json:"internal"`
+		MirrorInterval            string    `json:"mirror_interval"`
+		MirrorUpdated             time.Time `json:"mirror_updated"`
+		RepoTransfer              bool      `json:"repo_transfer"`
 	} `json:"repository"`
 	Sender struct {
 		Id                int       `json:"id"`
@@ -454,24 +454,24 @@ type PullRequestPayload struct {
 			StarredReposCount int       `json:"starred_repos_count"`
 			Username          string    `json:"username"`
 		} `json:"user"`
-		Title               string        `json:"title"`
-		Body                string        `json:"body"`
-		Labels              []interface{} `json:"labels"`
-		Milestone           interface{}   `json:"milestone"`
-		Assignee            interface{}   `json:"assignee"`
-		Assignees           interface{}   `json:"assignees"`
-		State               string        `json:"state"`
-		IsLocked            bool          `json:"is_locked"`
-		Comments            int           `json:"comments"`
-		HtmlUrl             string        `json:"html_url"`
-		DiffUrl             string        `json:"diff_url"`
-		PatchUrl            string        `json:"patch_url"`
-		Mergeable           bool          `json:"mergeable"`
-		Merged              bool          `json:"merged"`
-		MergedAt            interface{}   `json:"merged_at"`
-		MergeCommitSha      interface{}   `json:"merge_commit_sha"`
-		MergedBy            interface{}   `json:"merged_by"`
-		AllowMaintainerEdit bool          `json:"allow_maintainer_edit"`
+		Title               string   `json:"title"`
+		Body                string   `json:"body"`
+		Labels              []string `json:"labels"`
+		Milestone           string   `json:"milestone"`
+		Assignee            string   `json:"assignee"`
+		Assignees           string   `json:"assignees"`
+		State               string   `json:"state"`
+		IsLocked            bool     `json:"is_locked"`
+		Comments            int      `json:"comments"`
+		HtmlUrl             string   `json:"html_url"`
+		DiffUrl             string   `json:"diff_url"`
+		PatchUrl            string   `json:"patch_url"`
+		Mergeable           bool     `json:"mergeable"`
+		Merged              bool     `json:"merged"`
+		MergedAt            string   `json:"merged_at"`
+		MergeCommitSha      string   `json:"merge_commit_sha"`
+		MergedBy            string   `json:"merged_by"`
+		AllowMaintainerEdit bool     `json:"allow_maintainer_edit"`
 		Base                struct {
 			Label  string `json:"label"`
 			Ref    string `json:"ref"`
@@ -501,33 +501,33 @@ type PullRequestPayload struct {
 					StarredReposCount int       `json:"starred_repos_count"`
 					Username          string    `json:"username"`
 				} `json:"owner"`
-				Name            string      `json:"name"`
-				FullName        string      `json:"full_name"`
-				Description     string      `json:"description"`
-				Empty           bool        `json:"empty"`
-				Private         bool        `json:"private"`
-				Fork            bool        `json:"fork"`
-				Template        bool        `json:"template"`
-				Parent          interface{} `json:"parent"`
-				Mirror          bool        `json:"mirror"`
-				Size            int         `json:"size"`
-				Language        string      `json:"language"`
-				LanguagesUrl    string      `json:"languages_url"`
-				HtmlUrl         string      `json:"html_url"`
-				SshUrl          string      `json:"ssh_url"`
-				CloneUrl        string      `json:"clone_url"`
-				OriginalUrl     string      `json:"original_url"`
-				Website         string      `json:"website"`
-				StarsCount      int         `json:"stars_count"`
-				ForksCount      int         `json:"forks_count"`
-				WatchersCount   int         `json:"watchers_count"`
-				OpenIssuesCount int         `json:"open_issues_count"`
-				OpenPrCounter   int         `json:"open_pr_counter"`
-				ReleaseCounter  int         `json:"release_counter"`
-				DefaultBranch   string      `json:"default_branch"`
-				Archived        bool        `json:"archived"`
-				CreatedAt       time.Time   `json:"created_at"`
-				UpdatedAt       time.Time   `json:"updated_at"`
+				Name            string    `json:"name"`
+				FullName        string    `json:"full_name"`
+				Description     string    `json:"description"`
+				Empty           bool      `json:"empty"`
+				Private         bool      `json:"private"`
+				Fork            bool      `json:"fork"`
+				Template        bool      `json:"template"`
+				Parent          bool      `json:"parent"`
+				Mirror          bool      `json:"mirror"`
+				Size            int       `json:"size"`
+				Language        string    `json:"language"`
+				LanguagesUrl    string    `json:"languages_url"`
+				HtmlUrl         string    `json:"html_url"`
+				SshUrl          string    `json:"ssh_url"`
+				CloneUrl        string    `json:"clone_url"`
+				OriginalUrl     string    `json:"original_url"`
+				Website         string    `json:"website"`
+				StarsCount      int       `json:"stars_count"`
+				ForksCount      int       `json:"forks_count"`
+				WatchersCount   int       `json:"watchers_count"`
+				OpenIssuesCount int       `json:"open_issues_count"`
+				OpenPrCounter   int       `json:"open_pr_counter"`
+				ReleaseCounter  int       `json:"release_counter"`
+				DefaultBranch   string    `json:"default_branch"`
+				Archived        bool      `json:"archived"`
+				CreatedAt       time.Time `json:"created_at"`
+				UpdatedAt       time.Time `json:"updated_at"`
 				Permissions     struct {
 					Admin bool `json:"admin"`
 					Push  bool `json:"push"`
@@ -539,20 +539,20 @@ type PullRequestPayload struct {
 					AllowOnlyContributorsToTrackTime bool `json:"allow_only_contributors_to_track_time"`
 					EnableIssueDependencies          bool `json:"enable_issue_dependencies"`
 				} `json:"internal_tracker"`
-				HasWiki                   bool        `json:"has_wiki"`
-				HasPullRequests           bool        `json:"has_pull_requests"`
-				HasProjects               bool        `json:"has_projects"`
-				IgnoreWhitespaceConflicts bool        `json:"ignore_whitespace_conflicts"`
-				AllowMergeCommits         bool        `json:"allow_merge_commits"`
-				AllowRebase               bool        `json:"allow_rebase"`
-				AllowRebaseExplicit       bool        `json:"allow_rebase_explicit"`
-				AllowSquashMerge          bool        `json:"allow_squash_merge"`
-				DefaultMergeStyle         string      `json:"default_merge_style"`
-				AvatarUrl                 string      `json:"avatar_url"`
-				Internal                  bool        `json:"internal"`
-				MirrorInterval            string      `json:"mirror_interval"`
-				MirrorUpdated             time.Time   `json:"mirror_updated"`
-				RepoTransfer              interface{} `json:"repo_transfer"`
+				HasWiki                   bool      `json:"has_wiki"`
+				HasPullRequests           bool      `json:"has_pull_requests"`
+				HasProjects               bool      `json:"has_projects"`
+				IgnoreWhitespaceConflicts bool      `json:"ignore_whitespace_conflicts"`
+				AllowMergeCommits         bool      `json:"allow_merge_commits"`
+				AllowRebase               bool      `json:"allow_rebase"`
+				AllowRebaseExplicit       bool      `json:"allow_rebase_explicit"`
+				AllowSquashMerge          bool      `json:"allow_squash_merge"`
+				DefaultMergeStyle         string    `json:"default_merge_style"`
+				AvatarUrl                 string    `json:"avatar_url"`
+				Internal                  bool      `json:"internal"`
+				MirrorInterval            string    `json:"mirror_interval"`
+				MirrorUpdated             time.Time `json:"mirror_updated"`
+				RepoTransfer              bool      `json:"repo_transfer"`
 			} `json:"repo"`
 		} `json:"base"`
 		Head struct {
@@ -615,33 +615,33 @@ type PullRequestPayload struct {
 						StarredReposCount int       `json:"starred_repos_count"`
 						Username          string    `json:"username"`
 					} `json:"owner"`
-					Name            string      `json:"name"`
-					FullName        string      `json:"full_name"`
-					Description     string      `json:"description"`
-					Empty           bool        `json:"empty"`
-					Private         bool        `json:"private"`
-					Fork            bool        `json:"fork"`
-					Template        bool        `json:"template"`
-					Parent          interface{} `json:"parent"`
-					Mirror          bool        `json:"mirror"`
-					Size            int         `json:"size"`
-					Language        string      `json:"language"`
-					LanguagesUrl    string      `json:"languages_url"`
-					HtmlUrl         string      `json:"html_url"`
-					SshUrl          string      `json:"ssh_url"`
-					CloneUrl        string      `json:"clone_url"`
-					OriginalUrl     string      `json:"original_url"`
-					Website         string      `json:"website"`
-					StarsCount      int         `json:"stars_count"`
-					ForksCount      int         `json:"forks_count"`
-					WatchersCount   int         `json:"watchers_count"`
-					OpenIssuesCount int         `json:"open_issues_count"`
-					OpenPrCounter   int         `json:"open_pr_counter"`
-					ReleaseCounter  int         `json:"release_counter"`
-					DefaultBranch   string      `json:"default_branch"`
-					Archived        bool        `json:"archived"`
-					CreatedAt       time.Time   `json:"created_at"`
-					UpdatedAt       time.Time   `json:"updated_at"`
+					Name            string    `json:"name"`
+					FullName        string    `json:"full_name"`
+					Description     string    `json:"description"`
+					Empty           bool      `json:"empty"`
+					Private         bool      `json:"private"`
+					Fork            bool      `json:"fork"`
+					Template        bool      `json:"template"`
+					Parent          bool      `json:"parent"`
+					Mirror          bool      `json:"mirror"`
+					Size            int       `json:"size"`
+					Language        string    `json:"language"`
+					LanguagesUrl    string    `json:"languages_url"`
+					HtmlUrl         string    `json:"html_url"`
+					SshUrl          string    `json:"ssh_url"`
+					CloneUrl        string    `json:"clone_url"`
+					OriginalUrl     string    `json:"original_url"`
+					Website         string    `json:"website"`
+					StarsCount      int       `json:"stars_count"`
+					ForksCount      int       `json:"forks_count"`
+					WatchersCount   int       `json:"watchers_count"`
+					OpenIssuesCount int       `json:"open_issues_count"`
+					OpenPrCounter   int       `json:"open_pr_counter"`
+					ReleaseCounter  int       `json:"release_counter"`
+					DefaultBranch   string    `json:"default_branch"`
+					Archived        bool      `json:"archived"`
+					CreatedAt       time.Time `json:"created_at"`
+					UpdatedAt       time.Time `json:"updated_at"`
 					Permissions     struct {
 						Admin bool `json:"admin"`
 						Push  bool `json:"push"`
@@ -653,20 +653,20 @@ type PullRequestPayload struct {
 						AllowOnlyContributorsToTrackTime bool `json:"allow_only_contributors_to_track_time"`
 						EnableIssueDependencies          bool `json:"enable_issue_dependencies"`
 					} `json:"internal_tracker"`
-					HasWiki                   bool        `json:"has_wiki"`
-					HasPullRequests           bool        `json:"has_pull_requests"`
-					HasProjects               bool        `json:"has_projects"`
-					IgnoreWhitespaceConflicts bool        `json:"ignore_whitespace_conflicts"`
-					AllowMergeCommits         bool        `json:"allow_merge_commits"`
-					AllowRebase               bool        `json:"allow_rebase"`
-					AllowRebaseExplicit       bool        `json:"allow_rebase_explicit"`
-					AllowSquashMerge          bool        `json:"allow_squash_merge"`
-					DefaultMergeStyle         string      `json:"default_merge_style"`
-					AvatarUrl                 string      `json:"avatar_url"`
-					Internal                  bool        `json:"internal"`
-					MirrorInterval            string      `json:"mirror_interval"`
-					MirrorUpdated             time.Time   `json:"mirror_updated"`
-					RepoTransfer              interface{} `json:"repo_transfer"`
+					HasWiki                   bool      `json:"has_wiki"`
+					HasPullRequests           bool      `json:"has_pull_requests"`
+					HasProjects               bool      `json:"has_projects"`
+					IgnoreWhitespaceConflicts bool      `json:"ignore_whitespace_conflicts"`
+					AllowMergeCommits         bool      `json:"allow_merge_commits"`
+					AllowRebase               bool      `json:"allow_rebase"`
+					AllowRebaseExplicit       bool      `json:"allow_rebase_explicit"`
+					AllowSquashMerge          bool      `json:"allow_squash_merge"`
+					DefaultMergeStyle         string    `json:"default_merge_style"`
+					AvatarUrl                 string    `json:"avatar_url"`
+					Internal                  bool      `json:"internal"`
+					MirrorInterval            string    `json:"mirror_interval"`
+					MirrorUpdated             time.Time `json:"mirror_updated"`
+					RepoTransfer              bool      `json:"repo_transfer"`
 				} `json:"parent"`
 				Mirror          bool      `json:"mirror"`
 				Size            int       `json:"size"`
@@ -698,27 +698,27 @@ type PullRequestPayload struct {
 					AllowOnlyContributorsToTrackTime bool `json:"allow_only_contributors_to_track_time"`
 					EnableIssueDependencies          bool `json:"enable_issue_dependencies"`
 				} `json:"internal_tracker"`
-				HasWiki                   bool        `json:"has_wiki"`
-				HasPullRequests           bool        `json:"has_pull_requests"`
-				HasProjects               bool        `json:"has_projects"`
-				IgnoreWhitespaceConflicts bool        `json:"ignore_whitespace_conflicts"`
-				AllowMergeCommits         bool        `json:"allow_merge_commits"`
-				AllowRebase               bool        `json:"allow_rebase"`
-				AllowRebaseExplicit       bool        `json:"allow_rebase_explicit"`
-				AllowSquashMerge          bool        `json:"allow_squash_merge"`
-				DefaultMergeStyle         string      `json:"default_merge_style"`
-				AvatarUrl                 string      `json:"avatar_url"`
-				Internal                  bool        `json:"internal"`
-				MirrorInterval            string      `json:"mirror_interval"`
-				MirrorUpdated             time.Time   `json:"mirror_updated"`
-				RepoTransfer              interface{} `json:"repo_transfer"`
+				HasWiki                   bool      `json:"has_wiki"`
+				HasPullRequests           bool      `json:"has_pull_requests"`
+				HasProjects               bool      `json:"has_projects"`
+				IgnoreWhitespaceConflicts bool      `json:"ignore_whitespace_conflicts"`
+				AllowMergeCommits         bool      `json:"allow_merge_commits"`
+				AllowRebase               bool      `json:"allow_rebase"`
+				AllowRebaseExplicit       bool      `json:"allow_rebase_explicit"`
+				AllowSquashMerge          bool      `json:"allow_squash_merge"`
+				DefaultMergeStyle         string    `json:"default_merge_style"`
+				AvatarUrl                 string    `json:"avatar_url"`
+				Internal                  bool      `json:"internal"`
+				MirrorInterval            string    `json:"mirror_interval"`
+				MirrorUpdated             time.Time `json:"mirror_updated"`
+				RepoTransfer              bool      `json:"repo_transfer"`
 			} `json:"repo"`
 		} `json:"head"`
-		MergeBase string      `json:"merge_base"`
-		DueDate   interface{} `json:"due_date"`
-		CreatedAt time.Time   `json:"created_at"`
-		UpdatedAt time.Time   `json:"updated_at"`
-		ClosedAt  interface{} `json:"closed_at"`
+		MergeBase string    `json:"merge_base"`
+		DueDate   time.Time `json:"due_date"`
+		CreatedAt time.Time `json:"created_at"`
+		UpdatedAt time.Time `json:"updated_at"`
+		ClosedAt  time.Time `json:"closed_at"`
 	} `json:"pull_request"`
 	Repository struct {
 		Id    int `json:"id"`
@@ -744,33 +744,33 @@ type PullRequestPayload struct {
 			StarredReposCount int       `json:"starred_repos_count"`
 			Username          string    `json:"username"`
 		} `json:"owner"`
-		Name            string      `json:"name"`
-		FullName        string      `json:"full_name"`
-		Description     string      `json:"description"`
-		Empty           bool        `json:"empty"`
-		Private         bool        `json:"private"`
-		Fork            bool        `json:"fork"`
-		Template        bool        `json:"template"`
-		Parent          interface{} `json:"parent"`
-		Mirror          bool        `json:"mirror"`
-		Size            int         `json:"size"`
-		Language        string      `json:"language"`
-		LanguagesUrl    string      `json:"languages_url"`
-		HtmlUrl         string      `json:"html_url"`
-		SshUrl          string      `json:"ssh_url"`
-		CloneUrl        string      `json:"clone_url"`
-		OriginalUrl     string      `json:"original_url"`
-		Website         string      `json:"website"`
-		StarsCount      int         `json:"stars_count"`
-		ForksCount      int         `json:"forks_count"`
-		WatchersCount   int         `json:"watchers_count"`
-		OpenIssuesCount int         `json:"open_issues_count"`
-		OpenPrCounter   int         `json:"open_pr_counter"`
-		ReleaseCounter  int         `json:"release_counter"`
-		DefaultBranch   string      `json:"default_branch"`
-		Archived        bool        `json:"archived"`
-		CreatedAt       time.Time   `json:"created_at"`
-		UpdatedAt       time.Time   `json:"updated_at"`
+		Name            string    `json:"name"`
+		FullName        string    `json:"full_name"`
+		Description     string    `json:"description"`
+		Empty           bool      `json:"empty"`
+		Private         bool      `json:"private"`
+		Fork            bool      `json:"fork"`
+		Template        bool      `json:"template"`
+		Parent          bool      `json:"parent"`
+		Mirror          bool      `json:"mirror"`
+		Size            int       `json:"size"`
+		Language        string    `json:"language"`
+		LanguagesUrl    string    `json:"languages_url"`
+		HtmlUrl         string    `json:"html_url"`
+		SshUrl          string    `json:"ssh_url"`
+		CloneUrl        string    `json:"clone_url"`
+		OriginalUrl     string    `json:"original_url"`
+		Website         string    `json:"website"`
+		StarsCount      int       `json:"stars_count"`
+		ForksCount      int       `json:"forks_count"`
+		WatchersCount   int       `json:"watchers_count"`
+		OpenIssuesCount int       `json:"open_issues_count"`
+		OpenPrCounter   int       `json:"open_pr_counter"`
+		ReleaseCounter  int       `json:"release_counter"`
+		DefaultBranch   string    `json:"default_branch"`
+		Archived        bool      `json:"archived"`
+		CreatedAt       time.Time `json:"created_at"`
+		UpdatedAt       time.Time `json:"updated_at"`
 		Permissions     struct {
 			Admin bool `json:"admin"`
 			Push  bool `json:"push"`
@@ -782,20 +782,20 @@ type PullRequestPayload struct {
 			AllowOnlyContributorsToTrackTime bool `json:"allow_only_contributors_to_track_time"`
 			EnableIssueDependencies          bool `json:"enable_issue_dependencies"`
 		} `json:"internal_tracker"`
-		HasWiki                   bool        `json:"has_wiki"`
-		HasPullRequests           bool        `json:"has_pull_requests"`
-		HasProjects               bool        `json:"has_projects"`
-		IgnoreWhitespaceConflicts bool        `json:"ignore_whitespace_conflicts"`
-		AllowMergeCommits         bool        `json:"allow_merge_commits"`
-		AllowRebase               bool        `json:"allow_rebase"`
-		AllowRebaseExplicit       bool        `json:"allow_rebase_explicit"`
-		AllowSquashMerge          bool        `json:"allow_squash_merge"`
-		DefaultMergeStyle         string      `json:"default_merge_style"`
-		AvatarUrl                 string      `json:"avatar_url"`
-		Internal                  bool        `json:"internal"`
-		MirrorInterval            string      `json:"mirror_interval"`
-		MirrorUpdated             time.Time   `json:"mirror_updated"`
-		RepoTransfer              interface{} `json:"repo_transfer"`
+		HasWiki                   bool      `json:"has_wiki"`
+		HasPullRequests           bool      `json:"has_pull_requests"`
+		HasProjects               bool      `json:"has_projects"`
+		IgnoreWhitespaceConflicts bool      `json:"ignore_whitespace_conflicts"`
+		AllowMergeCommits         bool      `json:"allow_merge_commits"`
+		AllowRebase               bool      `json:"allow_rebase"`
+		AllowRebaseExplicit       bool      `json:"allow_rebase_explicit"`
+		AllowSquashMerge          bool      `json:"allow_squash_merge"`
+		DefaultMergeStyle         string    `json:"default_merge_style"`
+		AvatarUrl                 string    `json:"avatar_url"`
+		Internal                  bool      `json:"internal"`
+		MirrorInterval            string    `json:"mirror_interval"`
+		MirrorUpdated             time.Time `json:"mirror_updated"`
+		RepoTransfer              bool      `json:"repo_transfer"`
 	} `json:"repository"`
 	Sender struct {
 		Id                int       `json:"id"`
@@ -851,25 +851,25 @@ type PullRequestCommentedPayload struct {
 			StarredReposCount int       `json:"starred_repos_count"`
 			Username          string    `json:"username"`
 		} `json:"user"`
-		OriginalAuthor   string        `json:"original_author"`
-		OriginalAuthorId int           `json:"original_author_id"`
-		Title            string        `json:"title"`
-		Body             string        `json:"body"`
-		Ref              string        `json:"ref"`
-		Labels           []interface{} `json:"labels"`
-		Milestone        interface{}   `json:"milestone"`
-		Assignee         interface{}   `json:"assignee"`
-		Assignees        interface{}   `json:"assignees"`
-		State            string        `json:"state"`
-		IsLocked         bool          `json:"is_locked"`
-		Comments         int           `json:"comments"`
-		CreatedAt        time.Time     `json:"created_at"`
-		UpdatedAt        time.Time     `json:"updated_at"`
-		ClosedAt         interface{}   `json:"closed_at"`
-		DueDate          interface{}   `json:"due_date"`
+		OriginalAuthor   string    `json:"original_author"`
+		OriginalAuthorId int       `json:"original_author_id"`
+		Title            string    `json:"title"`
+		Body             string    `json:"body"`
+		Ref              string    `json:"ref"`
+		Labels           []string  `json:"labels"`
+		Milestone        string    `json:"milestone"`
+		Assignee         string    `json:"assignee"`
+		Assignees        string    `json:"assignees"`
+		State            string    `json:"state"`
+		IsLocked         bool      `json:"is_locked"`
+		Comments         int       `json:"comments"`
+		CreatedAt        time.Time `json:"created_at"`
+		UpdatedAt        time.Time `json:"updated_at"`
+		ClosedAt         time.Time `json:"closed_at"`
+		DueDate          time.Time `json:"due_date"`
 		PullRequest      struct {
-			Merged   bool        `json:"merged"`
-			MergedAt interface{} `json:"merged_at"`
+			Merged   bool      `json:"merged"`
+			MergedAt time.Time `json:"merged_at"`
 		} `json:"pull_request"`
 		Repository struct {
 			Id       int    `json:"id"`
@@ -935,33 +935,33 @@ type PullRequestCommentedPayload struct {
 			StarredReposCount int       `json:"starred_repos_count"`
 			Username          string    `json:"username"`
 		} `json:"owner"`
-		Name            string      `json:"name"`
-		FullName        string      `json:"full_name"`
-		Description     string      `json:"description"`
-		Empty           bool        `json:"empty"`
-		Private         bool        `json:"private"`
-		Fork            bool        `json:"fork"`
-		Template        bool        `json:"template"`
-		Parent          interface{} `json:"parent"`
-		Mirror          bool        `json:"mirror"`
-		Size            int         `json:"size"`
-		Language        string      `json:"language"`
-		LanguagesUrl    string      `json:"languages_url"`
-		HtmlUrl         string      `json:"html_url"`
-		SshUrl          string      `json:"ssh_url"`
-		CloneUrl        string      `json:"clone_url"`
-		OriginalUrl     string      `json:"original_url"`
-		Website         string      `json:"website"`
-		StarsCount      int         `json:"stars_count"`
-		ForksCount      int         `json:"forks_count"`
-		WatchersCount   int         `json:"watchers_count"`
-		OpenIssuesCount int         `json:"open_issues_count"`
-		OpenPrCounter   int         `json:"open_pr_counter"`
-		ReleaseCounter  int         `json:"release_counter"`
-		DefaultBranch   string      `json:"default_branch"`
-		Archived        bool        `json:"archived"`
-		CreatedAt       time.Time   `json:"created_at"`
-		UpdatedAt       time.Time   `json:"updated_at"`
+		Name            string    `json:"name"`
+		FullName        string    `json:"full_name"`
+		Description     string    `json:"description"`
+		Empty           bool      `json:"empty"`
+		Private         bool      `json:"private"`
+		Fork            bool      `json:"fork"`
+		Template        bool      `json:"template"`
+		Parent          bool      `json:"parent"`
+		Mirror          bool      `json:"mirror"`
+		Size            int       `json:"size"`
+		Language        string    `json:"language"`
+		LanguagesUrl    string    `json:"languages_url"`
+		HtmlUrl         string    `json:"html_url"`
+		SshUrl          string    `json:"ssh_url"`
+		CloneUrl        string    `json:"clone_url"`
+		OriginalUrl     string    `json:"original_url"`
+		Website         string    `json:"website"`
+		StarsCount      int       `json:"stars_count"`
+		ForksCount      int       `json:"forks_count"`
+		WatchersCount   int       `json:"watchers_count"`
+		OpenIssuesCount int       `json:"open_issues_count"`
+		OpenPrCounter   int       `json:"open_pr_counter"`
+		ReleaseCounter  int       `json:"release_counter"`
+		DefaultBranch   string    `json:"default_branch"`
+		Archived        bool      `json:"archived"`
+		CreatedAt       time.Time `json:"created_at"`
+		UpdatedAt       time.Time `json:"updated_at"`
 		Permissions     struct {
 			Admin bool `json:"admin"`
 			Push  bool `json:"push"`
@@ -973,20 +973,20 @@ type PullRequestCommentedPayload struct {
 			AllowOnlyContributorsToTrackTime bool `json:"allow_only_contributors_to_track_time"`
 			EnableIssueDependencies          bool `json:"enable_issue_dependencies"`
 		} `json:"internal_tracker"`
-		HasWiki                   bool        `json:"has_wiki"`
-		HasPullRequests           bool        `json:"has_pull_requests"`
-		HasProjects               bool        `json:"has_projects"`
-		IgnoreWhitespaceConflicts bool        `json:"ignore_whitespace_conflicts"`
-		AllowMergeCommits         bool        `json:"allow_merge_commits"`
-		AllowRebase               bool        `json:"allow_rebase"`
-		AllowRebaseExplicit       bool        `json:"allow_rebase_explicit"`
-		AllowSquashMerge          bool        `json:"allow_squash_merge"`
-		DefaultMergeStyle         string      `json:"default_merge_style"`
-		AvatarUrl                 string      `json:"avatar_url"`
-		Internal                  bool        `json:"internal"`
-		MirrorInterval            string      `json:"mirror_interval"`
-		MirrorUpdated             time.Time   `json:"mirror_updated"`
-		RepoTransfer              interface{} `json:"repo_transfer"`
+		HasWiki                   bool      `json:"has_wiki"`
+		HasPullRequests           bool      `json:"has_pull_requests"`
+		HasProjects               bool      `json:"has_projects"`
+		IgnoreWhitespaceConflicts bool      `json:"ignore_whitespace_conflicts"`
+		AllowMergeCommits         bool      `json:"allow_merge_commits"`
+		AllowRebase               bool      `json:"allow_rebase"`
+		AllowRebaseExplicit       bool      `json:"allow_rebase_explicit"`
+		AllowSquashMerge          bool      `json:"allow_squash_merge"`
+		DefaultMergeStyle         string    `json:"default_merge_style"`
+		AvatarUrl                 string    `json:"avatar_url"`
+		Internal                  bool      `json:"internal"`
+		MirrorInterval            string    `json:"mirror_interval"`
+		MirrorUpdated             time.Time `json:"mirror_updated"`
+		RepoTransfer              bool      `json:"repo_transfer"`
 	} `json:"repository"`
 	Sender struct {
 		Id                int       `json:"id"`

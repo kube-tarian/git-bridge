@@ -16,7 +16,7 @@ import (
 var (
 	ErrEventNotSpecifiedToParse  = errors.New("no Event specified to parse")
 	ErrInvalidHTTPMethod         = errors.New("invalid HTTP Method")
-	ErrMissingGithubEventHeader  = errors.New("missing X-GitHub-Event Header")
+	ErrMissingGithubEventHeader  = errors.New("missing X-Gitea-Event Header")
 	ErrMissingHubSignatureHeader = errors.New("missing X-Hub-Signature Header")
 	ErrEventNotFound             = errors.New("event not defined to be parsed")
 	ErrParsingPayload            = errors.New("error parsing payload")
@@ -93,7 +93,7 @@ func (hook Webhook) Parse(r *http.Request, events ...Event) (interface{}, error)
 		return nil, ErrInvalidHTTPMethod
 	}
 
-	event := r.Header.Get("x-gitea-event")
+	event := r.Header.Get("X-Gitea-Event")
 	if event == "" {
 		return nil, ErrMissingGithubEventHeader
 	}

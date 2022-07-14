@@ -28,7 +28,7 @@ type Event string
 
 // GitHub hook types
 const (
-	PushPayloadEvent               Event = "push"
+	PushEvent                      Event = "push"
 	PullRequestCreatedEvent        Event = "pull"
 	PullRequestMergeAttemptedEvent Event = "merge"
 	PullRequestCommentEvent        Event = "pull_comment"
@@ -132,7 +132,7 @@ func (hook Webhook) Parse(r *http.Request, events ...Event) (interface{}, error)
 	}
 
 	switch azureEvent {
-	case PushPayloadEvent:
+	case PushEvent:
 		var pl PushPayload
 		err = json.Unmarshal([]byte(payload), &pl)
 		return pl, err

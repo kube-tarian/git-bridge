@@ -9,6 +9,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/kube-tarian/git-bridge/azure"
 	"github.com/kube-tarian/git-bridge/bitbucket"
+	"github.com/kube-tarian/git-bridge/gitea"
 	"github.com/kube-tarian/git-bridge/github"
 	"github.com/kube-tarian/git-bridge/gitlab"
 	"github.com/kube-tarian/git-bridge/models"
@@ -306,6 +307,103 @@ func gitComposer(release interface{}, event string) *models.Gitevent {
 		gitdatas.Removedfiles = checkData(removedFilesString)
 
 		gitdatas.Message = v.Message.Text
+
+	case gitea.PushEventPayload:
+		gitdatas.Uuid = uuid
+		gitdatas.Url = v.Repository.CloneUrl
+		gitdatas.Event = event
+		gitdatas.Eventid = v.Repository.Name
+		gitdatas.Authorname = v.Sender.Username
+		gitdatas.Authormail = v.Sender.Email
+		gitdatas.DoneAt = v.Sender.Created.String()
+		gitdatas.Repository = v.Repository.Name
+		gitdatas.Branch = v.Repository.DefaultBranch
+		addedFilesSlice := v.Commits[0].Added
+		addedFilesString := getStats(&addedFilesSlice)
+		gitdatas.Addedfiles = checkData(addedFilesString)
+
+		modifiedFilesSlice := v.Commits[0].Modified
+		modifiedFilesString := getStats(&modifiedFilesSlice)
+		gitdatas.Modifiedfiles = checkData(modifiedFilesString)
+
+		removedFilesSlice := v.Commits[0].Removed
+		removedFilesString := getStats(&removedFilesSlice)
+		gitdatas.Removedfiles = checkData(removedFilesString)
+
+		gitdatas.Message = v.HeadCommit.Message
+
+	case gitea.PullRequestPayload:
+		gitdatas.Uuid = uuid
+		gitdatas.Url = v.Repository.CloneUrl
+		gitdatas.Event = event
+		gitdatas.Eventid = v.Repository.Name
+		gitdatas.Authorname = v.Sender.Username
+		gitdatas.Authormail = v.Sender.Email
+		gitdatas.DoneAt = v.Sender.Created.String()
+		gitdatas.Repository = v.Repository.Name
+		gitdatas.Branch = v.Repository.DefaultBranch
+		addedFilesSlice := ""
+		addedFilesString := addedFilesSlice
+		gitdatas.Addedfiles = checkData(addedFilesString)
+
+		modifiedFilesSlice := ""
+		modifiedFilesString := modifiedFilesSlice
+		gitdatas.Modifiedfiles = checkData(modifiedFilesString)
+
+		removedFilesSlice := ""
+		removedFilesString := removedFilesSlice
+		gitdatas.Removedfiles = checkData(removedFilesString)
+
+		gitdatas.Message = fmt.Sprintf("Pull Request : %v", v.Action)
+
+	case gitea.PullRequestCommentedPayload:
+		gitdatas.Uuid = uuid
+		gitdatas.Url = v.Repository.CloneUrl
+		gitdatas.Event = event
+		gitdatas.Eventid = v.Repository.Name
+		gitdatas.Authorname = v.Sender.Username
+		gitdatas.Authormail = v.Sender.Email
+		gitdatas.DoneAt = v.Sender.Created.String()
+		gitdatas.Repository = v.Repository.Name
+		gitdatas.Branch = v.Repository.DefaultBranch
+		addedFilesSlice := ""
+		addedFilesString := addedFilesSlice
+		gitdatas.Addedfiles = checkData(addedFilesString)
+
+		modifiedFilesSlice := ""
+
+		modifiedFilesString := modifiedFilesSlice
+		gitdatas.Modifiedfiles = checkData(modifiedFilesString)
+
+		removedFilesSlice := ""
+		removedFilesString := removedFilesSlice
+		gitdatas.Removedfiles = checkData(removedFilesString)
+
+		gitdatas.Message = fmt.Sprintf("Comment : %v", v.Comment.Body)
+
+	case gitea.ForkEventPayload:
+		gitdatas.Uuid = uuid
+		gitdatas.Url = v.Forkee.CloneUrl
+		gitdatas.Event = event
+		gitdatas.Eventid = v.Forkee.Name
+		gitdatas.Authorname = v.Sender.Username
+		gitdatas.Authormail = v.Sender.Email
+		gitdatas.DoneAt = v.Sender.Created.String()
+		gitdatas.Repository = v.Forkee.Name
+		gitdatas.Branch = v.Forkee.DefaultBranch
+		addedFilesSlice := ""
+		addedFilesString := addedFilesSlice
+		gitdatas.Addedfiles = checkData(addedFilesString)
+
+		modifiedFilesSlice := ""
+		modifiedFilesString := modifiedFilesSlice
+		gitdatas.Modifiedfiles = checkData(modifiedFilesString)
+
+		removedFilesSlice := ""
+		removedFilesString := removedFilesSlice
+		gitdatas.Removedfiles = checkData(removedFilesString)
+
+		gitdatas.Message = v.Forkee.Description
 
 	}
 	return &gitdatas

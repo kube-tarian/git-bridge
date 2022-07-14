@@ -7,9 +7,46 @@ import (
 
 	"github.com/kube-tarian/git-bridge/azure"
 	"github.com/kube-tarian/git-bridge/bitbucket"
+	"github.com/kube-tarian/git-bridge/gitea"
 	"github.com/kube-tarian/git-bridge/github"
 	"github.com/kube-tarian/git-bridge/gitlab"
 )
+
+func (app *application) giteaHandler(w http.ResponseWriter, r *http.Request) {
+	event := r.Header.Get("X-Gitea-Event")
+	if event == "" {
+		log.Println("ErrMissingGiteaEventHeader")
+	}
+	hook, _ := gitea.New()
+	payload, err := hook.Parse(r, gitea.PushEvent, gitea.PullRequestEvent, gitea.PullRequestReviewEvent, gitea.ForkEvent)
+	if err != nil {
+		if err == gitea.ErrEventNotFound {
+			log.Print("Error This Event is not Supported")
+		}
+	}
+
+	switch value := payload.(type) {
+
+	case gitea.PushEventPayload:
+		release := value
+		composed := gitComposer(release, event)
+		app.publish.JS.GitPublish(composed)
+	case gitea.PullRequestPayload:
+		release := value
+		composed := gitComposer(release, event)
+		app.publish.JS.GitPublish(composed)
+
+	case gitea.PullRequestCommentedPayload:
+		release := value
+		composed := gitComposer(release, event)
+		app.publish.JS.GitPublish(composed)
+	case gitea.ForkEventPayload:
+		release := value
+		composed := gitComposer(release, event)
+		app.publish.JS.GitPublish(composed)
+
+	}
+}
 
 func (app *application) azureHandler(w http.ResponseWriter, r *http.Request) {
 	event := r.Header.Get("X-Azure-Event")
@@ -17,7 +54,7 @@ func (app *application) azureHandler(w http.ResponseWriter, r *http.Request) {
 		log.Println("ErrMissingGithubEventHeader")
 	}
 	hook, _ := azure.New()
-	payload, err := hook.Parse(r, azure.PushPayloadEvent, azure.PullRequestCommentEvent, azure.PullRequestCreatedEvent, azure.PullRequestMergeAttemptedEvent)
+	payload, err := hook.Parse(r, azure.PushEvent, azure.PullRequestCommentEvent, azure.PullRequestCreatedEvent, azure.PullRequestMergeAttemptedEvent)
 	if err != nil {
 		if err == azure.ErrEventNotFound {
 			log.Print("Error This Event is not Supported")
