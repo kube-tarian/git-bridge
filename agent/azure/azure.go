@@ -23,10 +23,10 @@ var (
 	ErrHMACVerificationFailed    = errors.New("HMAC verification failed")
 )
 
-// Event defines a GitHub hook event type
+// Event defines a Azure hook event type
 type Event string
 
-// GitHub hook types
+// Azure hook types
 const (
 	PushEvent                      Event = "push"
 	PullRequestCreatedEvent        Event = "pull"
@@ -34,10 +34,10 @@ const (
 	PullRequestCommentEvent        Event = "pull_comment"
 )
 
-// EventSubtype defines a GitHub Hook Event subtype
+// EventSubtype defines a Azure Hook Event subtype
 type EventSubtype string
 
-// GitHub hook event subtypes
+// Azure hook event subtypes
 const (
 	NoSubtype     EventSubtype = ""
 	BranchSubtype EventSubtype = "branch"
@@ -55,7 +55,7 @@ type WebhookOptions struct{}
 // Options is a namespace var for configuration options
 var Options = WebhookOptions{}
 
-// Secret registers the GitHub secret
+// Secret registers the Azure secret
 func (WebhookOptions) Secret(secret string) Option {
 	return func(hook *Webhook) error {
 		hook.secret = secret
