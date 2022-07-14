@@ -23,7 +23,7 @@ var (
 	ErrHMACVerificationFailed    = errors.New("HMAC verification failed")
 )
 
-// Event defines a GitHub hook event type
+// Event defines a Gitea hook event type
 type Event string
 
 // Gitea hook types
@@ -55,7 +55,7 @@ type WebhookOptions struct{}
 // Options is a namespace var for configuration options
 var Options = WebhookOptions{}
 
-// Secret registers the GitHub secret
+// Secret registers the Gitea secret
 func (WebhookOptions) Secret(secret string) Option {
 	return func(hook *Webhook) error {
 		hook.secret = secret
@@ -73,7 +73,7 @@ func New(options ...Option) (*Webhook, error) {
 	hook := new(Webhook)
 	for _, opt := range options {
 		if err := opt(hook); err != nil {
-			return nil, errors.New("Error applying Option")
+			return nil, errors.New("error applying Option")
 		}
 	}
 	return hook, nil
