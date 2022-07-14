@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Jul 12 10:52:38 2022
+# Make data base, printed on Thu Jul 14 10:39:36 2022
 
 # Variables
 
@@ -117,7 +117,7 @@ LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:
 # environment
 LESS = -R
 # environment
-WSL_INTEROP = /run/WSL/20223_interop
+WSL_INTEROP = /run/WSL/13545_interop
 # 'override' directive
 GNUMAKEFLAGS := 
 # environment
@@ -139,7 +139,7 @@ _ = /mnt/c/Users/vijes/AppData/Local/Programs/Microsoft VS Code/bin/code
 # environment
 XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-6f6dd4f3-b9d3-485e-a840-bfa7d34b286b.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-41eb33d2-62ce-479f-9c58-52f2a93b290e.sock
 # environment
 GOMODCACHE = /home/vijesh/go/pkg/mod
 # environment
@@ -159,7 +159,7 @@ GOPROXY = https://proxy.golang.org,direct
 # default
 SUFFIXES := 
 # environment
-_P9K_TTY = /dev/pts/0
+_P9K_TTY = /dev/pts/3
 # environment
 WSL_DISTRO_NAME = Ubuntu-20.04
 # default
@@ -224,6 +224,6 @@ agent:
 # strcache performance: lookups = 33 / hit rate = 15%
 # hash-table stats:
 # Load=28/8192=0%, Rehash=0, Collisions=0/33=0%
-# Finished Make data base on Tue Jul 12 10:52:38 2022
+# Finished Make data base on Thu Jul 14 10:39:36 2022
 
  
