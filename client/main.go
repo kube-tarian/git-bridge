@@ -45,11 +45,15 @@ func main() {
 		nats:      natsurl,
 		natstoken: token,
 	}
+	clickConn, err := clickhouse.Initialize(url)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	js := cfg.openJS()
 	log.Print(js)
 	pool := NewJsPool(js)
-	pool.gitSubscriber(eventSubject, eventConsumer)
+	pool.gitSubscriber(eventSubject, eventConsumer, clickConn)
 	stream, err := js.StreamInfo("GITMETRICS")
 	checkErr(err)
 	log.Println(stream)
@@ -92,7 +96,7 @@ func (c config) openJS() nats.JetStreamContext {
 
 }
 
-func (c jsPool) gitSubscriber(subject string, consumer string) {
+func (c jsPool) gitSubscriber(subject string, consumer string, conn *clickhouse.DBClient) {
 	c.js.Subscribe(subject, func(msg *nats.Msg) {
 		msg.Ack()
 		metrics := &models.Gitevent{}
@@ -101,11 +105,7 @@ func (c jsPool) gitSubscriber(subject string, consumer string) {
 			log.Fatal(err)
 		}
 
-		clickConn, err := clickhouse.Initialize(url)
-		if err != nil {
-			log.Fatal(err)
-		}
-		clickConn.InsertEvent(metrics)
+		conn.InsertEvent(metrics)
 		log.Println("Inserted metrics:", metrics)
 
 	}, nats.Durable(consumer), nats.ManualAck())
