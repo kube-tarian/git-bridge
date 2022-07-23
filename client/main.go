@@ -45,7 +45,7 @@ func main() {
 		nats:      natsurl,
 		natstoken: token,
 	}
-	clickConn, err := clickhouse.Initialize(url)
+	clients, err := clickhouse.Initialize(url)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -53,7 +53,7 @@ func main() {
 	js := cfg.openJS()
 	log.Print(js)
 	pool := NewJsPool(js)
-	pool.gitSubscriber(eventSubject, eventConsumer, clickConn)
+	pool.gitSubscriber(eventSubject, eventConsumer, clients)
 	stream, err := js.StreamInfo("GITMETRICS")
 	checkErr(err)
 	log.Println(stream)
