@@ -95,13 +95,18 @@ func (c config) openJS() nats.JetStreamContext {
 func (c jsPool) gitSubscriber(subject string, consumer string) {
 	c.js.Subscribe(subject, func(msg *nats.Msg) {
 		msg.Ack()
-		var metrics models.Gitevent
-		err := json.Unmarshal(msg.Data, &metrics)
+		metrics := &models.Gitevent{}
+		err := json.Unmarshal(msg.Data, metrics)
 		if err != nil {
 			log.Fatal(err)
 		}
-		//Get clickhouse connection and insert event
-		clickhouse.InsertEvent(url, metrics)
+
+		clickConn, err := clickhouse.Initialize(url)
+		if err != nil {
+			log.Fatal(err)
+		}
+		clickConn.InsertEvent(metrics)
+		log.Println("Inserted metrics:", metrics)
 
 	}, nats.Durable(consumer), nats.ManualAck())
 

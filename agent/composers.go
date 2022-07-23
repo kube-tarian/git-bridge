@@ -17,13 +17,12 @@ import (
 
 //gitdatas is an identifier for the gitevent model
 //and its used to hold the data from the payloads
-var gitdatas models.Gitevent
 
 //gitComposer checks the payload type and extracts the data from the payload and
 //compose it into the gitdatas identifier and returns it
 func gitComposer(release interface{}, event string) *models.Gitevent {
 	uuid := uuid.New().String()
-
+	gitdatas := &models.Gitevent{}
 	// here we are using the type assersion. release.(type) will return
 	//the type and assingns it to the identifier v
 	//the value in v will be used to match with the case
@@ -406,7 +405,7 @@ func gitComposer(release interface{}, event string) *models.Gitevent {
 		gitdatas.Message = v.Forkee.Description
 
 	}
-	return &gitdatas
+	return gitdatas
 }
 
 //getStats builds a string from the given slice

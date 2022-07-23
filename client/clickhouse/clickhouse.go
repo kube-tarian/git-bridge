@@ -7,12 +7,15 @@ import (
 	"gorm.io/gorm"
 )
 
-func InsertEvent(url string, metrics models.Gitevent) {
+type DBClient struct {
+	db *gorm.DB
+}
+
+func Initialize(url string) (*DBClient, error) {
 	db, err := gorm.Open(clickhouse.Open(url), &gorm.Config{})
 	if err != nil {
-		panic("failed to connect database")
+		return nil, err
 	}
-	// Auto Migrate
 	db.AutoMigrate(&models.Gitevent{})
 	// Set table options
 	db.Set("gorm:table_options", "ENGINE=File(cluster, default, hits)").AutoMigrate(&models.Gitevent{})
@@ -20,6 +23,12 @@ func InsertEvent(url string, metrics models.Gitevent) {
 	// Set table cluster options
 	db.Set("gorm:table_cluster_options", "on cluster default").AutoMigrate(&models.Gitevent{})
 
-	// Insert
-	db.Create(&models.Gitevent{Uuid: string(metrics.Uuid), Event: metrics.Event, Eventid: metrics.Eventid, Branch: metrics.Branch, Url: metrics.Url, Authorname: metrics.Authorname, Authormail: metrics.Authormail, DoneAt: metrics.DoneAt, Repository: metrics.Repository, Addedfiles: metrics.Addedfiles, Modifiedfiles: metrics.Modifiedfiles, Removedfiles: metrics.Removedfiles, Message: metrics.Message})
+	return &DBClient{db: db}, nil
+
+}
+
+func (c *DBClient) InsertEvent(metrics *models.Gitevent) {
+
+	c.db.Create(metrics)
+
 }

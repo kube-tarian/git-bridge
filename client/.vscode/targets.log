@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
-
 # GNU Make 4.3
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jul 22 18:51:08 2022
+# Make data base, printed on Fri Jul 22 18:51:19 2022
 
 # Variables
 
@@ -33,7 +31,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
 .VARIABLES := 
 # environment
-PWD = /home/vijesh/go/src/github.com/git-bridge/agent
+PWD = /home/vijesh/go/src/github.com/git-bridge/client
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
@@ -53,7 +51,7 @@ LANG = C
 # makefile
 MAKEFLAGS = pqrR
 # makefile
-CURDIR := /home/vijesh/go/src/github.com/git-bridge/agent
+CURDIR := /home/vijesh/go/src/github.com/git-bridge/client
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # automatic
@@ -125,7 +123,7 @@ LOGNAME = vijesh
 # environment
 VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/vijes/.vscode/extensions/ms-vscode-remote.remote-wsl-0.66.3
 # makefile
-.DEFAULT_GOAL := agent
+.DEFAULT_GOAL := client
 # environment
 DISPLAY = :0
 # environment
@@ -139,7 +137,7 @@ _ = /mnt/c/Users/vijes/AppData/Local/Programs/Microsoft VS Code/bin/code
 # environment
 XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-8e875523-bc12-4986-bb36-39c80e9c148d.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-0ddd14db-6f24-4a60-8101-e4356f669b4c.sock
 # environment
 GOMODCACHE = /home/vijesh/go/pkg/mod
 # environment
@@ -173,9 +171,9 @@ WSL_DISTRO_NAME = Ubuntu-20.04
 
 # Directories
 
-# . (device 2080, inode 966500): 23 files, no impossibilities.
+# . (device 2080, inode 966434): 14 files, no impossibilities.
 
-# 23 files, no impossibilities in 1 directories.
+# 14 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -183,10 +181,17 @@ WSL_DISTRO_NAME = Ubuntu-20.04
 
 # Files
 
+client:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 2):
+	export DB_ADDRESS="127.0.0.1" && export DB_PORT="9000" && export NATS_TOKEN="UfmrJOYwYCCsgQvxvcfJ3BdI6c8WBbnD" && export NATS_ADDRESS="nats://localhost:4222" && go run .
+
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-09 16:21:08.677777906
+#  Last modified 2022-07-09 16:16:31.425338988
 #  File has been updated.
 #  Successfully updated.
 
@@ -203,13 +208,6 @@ all:
 #  File does not exist.
 #  File has not been updated.
 
-agent:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 2):
-	export NATS_TOKEN="UfmrJOYwYCCsgQvxvcfJ3BdI6c8WBbnD" && export NATS_ADDRESS="nats://localhost:4222" && docker run -d -p 4222:4222 nats:latest -js && go run .
-
 # files hash-table stats:
 # Load=5/1024=0%, Rehash=0, Collisions=0/15=0%
 # VPATH Search Paths
@@ -218,12 +216,14 @@ agent:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 29 / storage = 256 B / avg = 8 B
-# current buf: size = 8162 B / used = 256 B / count = 29 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 20 / storage = 186 B / avg = 9 B
+# current buf: size = 8162 B / used = 186 B / count = 20 / avg = 9 B
 
-# strcache performance: lookups = 34 / hit rate = 14%
+# strcache performance: lookups = 25 / hit rate = 20%
 # hash-table stats:
-# Load=29/8192=0%, Rehash=0, Collisions=0/34=0%
-# Finished Make data base on Fri Jul 22 18:51:08 2022
+# Load=20/8192=0%, Rehash=0, Collisions=0/25=0%
+# Finished Make data base on Fri Jul 22 18:51:19 2022
 
  
+make: *** No rule to make target 'all'.  Stop.
+
