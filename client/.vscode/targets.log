@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jul 22 18:51:19 2022
+# Make data base, printed on Sat Jul 23 20:39:02 2022
 
 # Variables
 
@@ -115,7 +115,7 @@ LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:
 # environment
 LESS = -R
 # environment
-WSL_INTEROP = /run/WSL/8_interop
+WSL_INTEROP = /run/WSL/20809_interop
 # 'override' directive
 GNUMAKEFLAGS := 
 # environment
@@ -137,7 +137,7 @@ _ = /mnt/c/Users/vijes/AppData/Local/Programs/Microsoft VS Code/bin/code
 # environment
 XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-0ddd14db-6f24-4a60-8101-e4356f669b4c.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-b7b82fb2-0d73-4f96-9fa7-cafebe325349.sock
 # environment
 GOMODCACHE = /home/vijesh/go/pkg/mod
 # environment
@@ -157,7 +157,7 @@ GOPROXY = https://proxy.golang.org,direct
 # default
 SUFFIXES := 
 # environment
-_P9K_TTY = /dev/pts/0
+_P9K_TTY = /dev/pts/2
 # environment
 WSL_DISTRO_NAME = Ubuntu-20.04
 # default
@@ -216,13 +216,13 @@ all:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 20 / storage = 186 B / avg = 9 B
-# current buf: size = 8162 B / used = 186 B / count = 20 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 20 / storage = 180 B / avg = 9 B
+# current buf: size = 8162 B / used = 180 B / count = 20 / avg = 9 B
 
 # strcache performance: lookups = 25 / hit rate = 20%
 # hash-table stats:
 # Load=20/8192=0%, Rehash=0, Collisions=0/25=0%
-# Finished Make data base on Fri Jul 22 18:51:19 2022
+# Finished Make data base on Sat Jul 23 20:39:02 2022
 
  
 make: *** No rule to make target 'all'.  Stop.

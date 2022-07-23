@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jul 22 18:51:08 2022
+# Make data base, printed on Sat Jul 23 20:38:54 2022
 
 # Variables
 
@@ -117,7 +117,7 @@ LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:
 # environment
 LESS = -R
 # environment
-WSL_INTEROP = /run/WSL/8_interop
+WSL_INTEROP = /run/WSL/20440_interop
 # 'override' directive
 GNUMAKEFLAGS := 
 # environment
@@ -139,7 +139,7 @@ _ = /mnt/c/Users/vijes/AppData/Local/Programs/Microsoft VS Code/bin/code
 # environment
 XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-8e875523-bc12-4986-bb36-39c80e9c148d.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-42ac3dda-87ee-413a-86ad-520dd1633260.sock
 # environment
 GOMODCACHE = /home/vijesh/go/pkg/mod
 # environment
@@ -159,12 +159,13 @@ GOPROXY = https://proxy.golang.org,direct
 # default
 SUFFIXES := 
 # environment
-_P9K_TTY = /dev/pts/0
+_P9K_TTY = /dev/pts/14
 # environment
 WSL_DISTRO_NAME = Ubuntu-20.04
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
 # variable set hash-table stats:
+ 
 # Load=76/1024=7%, Rehash=0, Collisions=1/106=1%
 
 # Pattern-specific Variable Values
@@ -224,6 +225,6 @@ agent:
 # strcache performance: lookups = 34 / hit rate = 14%
 # hash-table stats:
 # Load=29/8192=0%, Rehash=0, Collisions=0/34=0%
-# Finished Make data base on Fri Jul 22 18:51:08 2022
+# Finished Make data base on Sat Jul 23 20:38:54 2022
 
  

@@ -15,6 +15,12 @@ import (
 	"github.com/kube-tarian/git-bridge/models"
 )
 
+func compose(release github.PushPayload) *github.PushPayload {
+
+	value := &release
+	return value
+}
+
 //gitdatas is an identifier for the gitevent model
 //and its used to hold the data from the payloads
 
@@ -29,6 +35,7 @@ func gitComposer(release interface{}, event string) *models.Gitevent {
 	switch v := release.(type) {
 
 	case github.PushPayload:
+
 		gitdatas.Uuid = uuid
 		gitdatas.Url = v.Repository.HTMLURL
 		gitdatas.Event = event

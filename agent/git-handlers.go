@@ -98,8 +98,7 @@ func (app *application) githubHandler(w http.ResponseWriter, r *http.Request) {
 	switch value := payload.(type) {
 	case github.PushPayload:
 		release := value
-		composed := gitComposer(release, event)
-		app.publish.JS.GitPublish(composed)
+		app.publish.JS.Samplegithubpublish(&release)
 	case github.ForkPayload:
 		release := value
 		composed := gitComposer(release, event)
