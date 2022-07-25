@@ -1,18 +1,15 @@
 package main
 
 import (
-	"net/http"
-
-	"github.com/julienschmidt/httprouter"
+	"github.com/gin-gonic/gin"
 )
 
-func (app *application) routes() *httprouter.Router {
-	router := httprouter.New()
-
-	router.HandlerFunc(http.MethodPost, "/github", app.githubHandler)
-	router.HandlerFunc(http.MethodPost, "/gitlab", app.gitlabHandler)
-	router.HandlerFunc(http.MethodPost, "/bitbucket", app.bitBucketHandler)
-	router.HandlerFunc(http.MethodPost, "/azure", app.azureHandler)
-	router.HandlerFunc(http.MethodPost, "/gitea", app.giteaHandler)
+func (app *application) routes() *gin.Engine {
+	router := gin.Default()
+	router.POST("/gitea", app.giteaHandler)
+	router.POST("/azure", app.azureHandler)
+	router.POST("/bitbucket", app.bitBucketHandler)
+	router.POST("/gitlab", app.gitlabHandler)
+	router.POST("/github", app.githubHandler)
 	return router
 }
