@@ -6,10 +6,21 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/kube-tarian/git-bridge/azure"
 	"github.com/kube-tarian/git-bridge/bitbucket"
+	"github.com/kube-tarian/git-bridge/events"
 	"github.com/kube-tarian/git-bridge/gitea"
 	"github.com/kube-tarian/git-bridge/github"
 	"github.com/kube-tarian/git-bridge/gitlab"
 )
+
+func SpreadGithubEvents(value []string) []github.Event {
+	v := make([]github.Event, len(value))
+	for _, j := range value {
+
+		v = append(v, github.Event(j))
+
+	}
+	return v
+}
 
 func (app *application) giteaHandler(c *gin.Context) {
 	event := c.Request.Header.Get("X-Gitea-Event")
@@ -73,12 +84,14 @@ func (app *application) azureHandler(c *gin.Context) {
 
 //githubHandler handles the github webhooks post requests.
 func (app *application) githubHandler(c *gin.Context) {
+
+	value := SpreadGithubEvents(events.GithubEventTypesSlice)
 	event := c.Request.Header.Get("X-GitHub-Event")
 	if event == "" {
 		log.Println("ErrMissingGithubEventHeader")
 	}
 	hook, _ := github.New()
-	payload, err := hook.Parse(c.Request, github.PushEvent, github.ForkEvent, github.PullRequestEvent)
+	payload, err := hook.Parse(c.Request, value...)
 	if err != nil {
 		if err == github.ErrEventNotFound {
 			log.Print("Error This Event is not Supported")
