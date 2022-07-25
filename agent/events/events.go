@@ -1,6 +1,8 @@
 package events
 
-var GithubEventTypesSlice = []string{
+import "github.com/kube-tarian/git-bridge/github"
+
+var GithubEventTypesSlice = []github.Event{
 	"github.CheckRunEvent",
 	"github.CheckSuiteEvent",
 	"github.CommitCommentEvent",
