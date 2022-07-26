@@ -18,7 +18,7 @@ func (app *application) giteaHandler(c *gin.Context) {
 		log.Println("ErrMissingGiteaEventHeader")
 	}
 	hook, _ := gitea.New()
-	payload, err := hook.Parse(c.Request, gitea.PushEvent, gitea.PullRequestEvent, gitea.PullRequestReviewEvent, gitea.ForkEvent)
+	payload, err := hook.Parse(c.Request, events.GiteaEventTypesSlice...)
 	if err != nil {
 		if err == gitea.ErrEventNotFound {
 			log.Print("Error This Event is not Supported")
@@ -40,7 +40,9 @@ func (app *application) giteaHandler(c *gin.Context) {
 	case gitea.ForkEventPayload:
 		release := value
 		app.publish.JS.Publish(&release)
-
+	default:
+		release := value
+		app.publish.JS.Publish(&release)
 	}
 }
 
@@ -50,7 +52,7 @@ func (app *application) azureHandler(c *gin.Context) {
 		log.Println("ErrMissingGithubEventHeader")
 	}
 	hook, _ := azure.New()
-	payload, err := hook.Parse(c.Request, azure.PushEvent, azure.PullRequestCommentEvent, azure.PullRequestCreatedEvent, azure.PullRequestMergeAttemptedEvent)
+	payload, err := hook.Parse(c.Request, events.AzureEventTypesSlice...)
 	if err != nil {
 		if err == azure.ErrEventNotFound {
 			log.Print("Error This Event is not Supported")
@@ -69,12 +71,14 @@ func (app *application) azureHandler(c *gin.Context) {
 	case azure.PullRequestMergeAttemptedPayload:
 		release := value
 		app.publish.JS.Publish(&release)
+	default:
+		release := value
+		app.publish.JS.Publish(&release)
 	}
 }
 
 //githubHandler handles the github webhooks post requests.
 func (app *application) githubHandler(c *gin.Context) {
-
 	event := c.Request.Header.Get("X-GitHub-Event")
 	if event == "" {
 		log.Println("ErrMissingGithubEventHeader")
@@ -89,16 +93,18 @@ func (app *application) githubHandler(c *gin.Context) {
 	}
 
 	switch value := payload.(type) {
-	case github.PushPayload:
+	case github.CheckRunPayload:
 		release := value
 		app.publish.JS.Publish(&release)
-	case github.ForkPayload:
+	case github.CheckSuitePayload:
 		release := value
 		app.publish.JS.Publish(&release)
-	case github.PullRequestPayload:
+	case github.CommitCommentPayload:
 		release := value
 		app.publish.JS.Publish(&release)
-
+	default:
+		release := value
+		app.publish.JS.Publish(&release)
 	}
 
 }
@@ -110,7 +116,7 @@ func (app *application) gitlabHandler(c *gin.Context) {
 		log.Println("ErrMissingGitLabEventHeader")
 	}
 	hook, _ := gitlab.New()
-	payload, err := hook.Parse(c.Request, gitlab.PushEvents, gitlab.MergeRequestEvents)
+	payload, err := hook.Parse(c.Request, events.GitlabEventTypesSlice...)
 	if err != nil {
 		if err == gitlab.ErrEventNotFound {
 			log.Print("Error This Event is not Supported")
@@ -119,12 +125,13 @@ func (app *application) gitlabHandler(c *gin.Context) {
 
 	switch value := payload.(type) {
 
-	case gitlab.PushEventPayload:
-		release := value
-		app.publish.JS.Publish(&release)
 	case gitlab.MergeRequest:
 		release := value
 		app.publish.JS.Publish(&release)
+	default:
+		release := value
+		app.publish.JS.Publish(&release)
+
 	}
 }
 
@@ -135,7 +142,7 @@ func (app *application) bitBucketHandler(c *gin.Context) {
 		log.Println("ErrMissingEventKeyHeader")
 	}
 	hook, _ := bitbucket.New()
-	payload, err := hook.Parse(c.Request, bitbucket.RepoPushEvent, bitbucket.RepoForkEvent, bitbucket.PullRequestCreatedEvent)
+	payload, err := hook.Parse(c.Request, events.BitbucketEventTypesSlice...)
 	if err != nil {
 		if err == github.ErrEventNotFound {
 			log.Print("Error This Event is not Supported")
@@ -153,6 +160,8 @@ func (app *application) bitBucketHandler(c *gin.Context) {
 	case bitbucket.PullRequestCreatedPayload:
 		release := value
 		app.publish.JS.Publish(&release)
-
+	default:
+		release := value
+		app.publish.JS.Publish(&release)
 	}
 }

@@ -1,6 +1,12 @@
 package events
 
-import "github.com/kube-tarian/git-bridge/github"
+import (
+	"github.com/kube-tarian/git-bridge/azure"
+	"github.com/kube-tarian/git-bridge/bitbucket"
+	"github.com/kube-tarian/git-bridge/gitea"
+	"github.com/kube-tarian/git-bridge/github"
+	"github.com/kube-tarian/git-bridge/gitlab"
+)
 
 var GithubEventTypesSlice = []github.Event{
 	"check_run",
@@ -47,4 +53,53 @@ var GithubEventTypesSlice = []github.Event{
 	"workflow_dispatch",
 	"workflow_job",
 	"workflow_run",
+}
+
+var GitlabEventTypesSlice = []gitlab.Event{
+	"Push Hook",
+	"Tag Push Hook",
+	"Issue Hook",
+	"Confidential Issue Hook",
+	"Note Hook",
+	"Merge Request Hook",
+	"Wiki Page Hook",
+	"Pipeline Hook",
+	"Build Hook",
+	"Job Hook",
+	"System Hook",
+}
+
+var BitbucketEventTypesSlice = []bitbucket.Event{
+	"repo:push",
+	"repo:fork",
+	"repo:updated",
+	"repo:commit_comment_created",
+	"repo:commit_status_created",
+	"repo:commit_status_updated",
+	"issue:created",
+	"issue:updated",
+	"issue:comment_created",
+	"pullrequest:created",
+	"pullrequest:updated",
+	"pullrequest:approved",
+	"pullrequest:unapproved",
+	"pullrequest:fulfilled",
+	"pullrequest:rejected",
+	"pullrequest:comment_created",
+	"pullrequest:comment_updated",
+	"pullrequest:comment_deleted",
+}
+
+var GiteaEventTypesSlice = []gitea.Event{
+	"push",
+	"fork",
+	"pull_request",
+	"issue_comment",
+}
+
+var AzureEventTypesSlice = []azure.Event{
+	"push",
+	"pull",
+	"merge",
+	"pull_comment",
 }
