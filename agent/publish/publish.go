@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/kube-tarian/git-bridge/models"
 	"github.com/nats-io/nats.go"
 )
 
@@ -27,8 +28,13 @@ func NewModels(js nats.JetStreamContext, subject string) Models {
 	}
 }
 
-func (m *jsModel) Publish(value any) {
-	metricsJson, _ := json.Marshal(value)
+func (m *jsModel) Publish(repo, event, value string) {
+	metrics := &models.Gitevent{
+		Repo:    repo,
+		Event:   event,
+		Payload: value,
+	}
+	metricsJson, _ := json.Marshal(metrics)
 	_, err := m.js.Publish(m.eventSubject, metricsJson)
 	if err != nil {
 		panic(err)
