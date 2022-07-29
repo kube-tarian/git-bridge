@@ -1,17 +1,10 @@
 package models
 
+import "time"
+
 type Gitevent struct {
-	Uuid          string
-	Event         string
-	Eventid       string
-	Branch        string
-	Url           string
-	Authorname    string
-	Authormail    string
-	DoneAt        string
-	Repository    string
-	Addedfiles    string
-	Modifiedfiles string
-	Removedfiles  string
-	Message       string
+	Timestamp time.Time
+	Repo      string
+	Event     string
+	Payload   string
 }

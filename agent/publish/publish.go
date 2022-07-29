@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"time"
 
 	"github.com/kube-tarian/git-bridge/models"
 	"github.com/nats-io/nats.go"
@@ -34,6 +35,7 @@ func (m *jsModel) Publish(repo, event, value string) {
 		Event:   event,
 		Payload: value,
 	}
+	metrics.Timestamp = time.Now()
 	metricsJson, _ := json.Marshal(metrics)
 	_, err := m.js.Publish(m.eventSubject, metricsJson)
 	if err != nil {

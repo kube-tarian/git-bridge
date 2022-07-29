@@ -24,6 +24,7 @@ var (
 	url           string = fmt.Sprintf("tcp://%s:%s?debug=true", dbAdress, dbPort)
 )
 
+
 type config struct {
 	nats      string
 	natstoken string

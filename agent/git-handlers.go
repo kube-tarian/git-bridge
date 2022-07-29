@@ -42,10 +42,11 @@ func (app *application) giteaHandler(c *gin.Context) {
 	case gitea.ForkEventPayload:
 		release := value
 		app.publish.JS.Publish(repo, "ForkEventPayload", JtoS(&release))
+	}
 }
 
 func (app *application) azureHandler(c *gin.Context) {
-	repo:= "Azure"
+	repo := "Azure"
 	event := c.Request.Header.Get("X-Azure-Event")
 	if event == "" {
 		log.Println("ErrMissingGithubEventHeader")
@@ -76,7 +77,7 @@ func (app *application) azureHandler(c *gin.Context) {
 
 //githubHandler handles the github webhooks post requests.
 func (app *application) githubHandler(c *gin.Context) {
-	repo:= "Github"
+	repo := "Github"
 	event := c.Request.Header.Get("X-GitHub-Event")
 	if event == "" {
 		log.Println("ErrMissingGithubEventHeader")
@@ -155,7 +156,7 @@ func (app *application) githubHandler(c *gin.Context) {
 		release := value
 		app.publish.JS.Publish(repo, "ProjectPayload", JtoS(&release))
 	case github.ProjectCardPayload:
-		release := value	
+		release := value
 		app.publish.JS.Publish(repo, "ProjectCardPayload", JtoS(&release))
 	case github.ProjectColumnPayload:
 		release := value
@@ -193,7 +194,7 @@ func (app *application) githubHandler(c *gin.Context) {
 	case github.WatchPayload:
 		release := value
 		app.publish.JS.Publish(repo, "WatchPayload", JtoS(&release))
-		case github.WorkflowDispatchPayload:
+	case github.WorkflowDispatchPayload:
 		release := value
 		app.publish.JS.Publish(repo, "WorkflowDispatchPayload", JtoS(&release))
 	case github.WorkflowRunPayload:
@@ -223,10 +224,9 @@ func (app *application) gitlabHandler(c *gin.Context) {
 
 	switch value := payload.(type) {
 
-
-case gitlab.PushEventPayload:
-	release := value
-	app.publish.JS.Publish(repo, "PushEventPayload", JtoS(&release))
+	case gitlab.PushEventPayload:
+		release := value
+		app.publish.JS.Publish(repo, "PushEventPayload", JtoS(&release))
 	case gitlab.TagEventPayload:
 		release := value
 		app.publish.JS.Publish(repo, "TagEventPayload", JtoS(&release))
@@ -301,28 +301,28 @@ func (app *application) bitBucketHandler(c *gin.Context) {
 	case bitbucket.PullRequestCreatedPayload:
 		release := value
 		app.publish.JS.Publish(repo, "PullRequestCreatedPayload", JtoS(&release))
-		case bitbucket.PullRequestUpdatedPayload:
+	case bitbucket.PullRequestUpdatedPayload:
 		release := value
 		app.publish.JS.Publish(repo, "PullRequestUpdatedPayload", JtoS(&release))
-		case bitbucket.PullRequestApprovedPayload:
+	case bitbucket.PullRequestApprovedPayload:
 		release := value
 		app.publish.JS.Publish(repo, "PullRequestApprovedPayload", JtoS(&release))
-		case bitbucket.PullRequestUnapprovedPayload:
+	case bitbucket.PullRequestUnapprovedPayload:
 		release := value
 		app.publish.JS.Publish(repo, "PullRequestUnapprovedPayload", JtoS(&release))
-		case bitbucket.PullRequestMergedPayload:
+	case bitbucket.PullRequestMergedPayload:
 		release := value
 		app.publish.JS.Publish(repo, "PullRequestMergedPayload", JtoS(&release))
-		case bitbucket.PullRequestDeclinedPayload:
+	case bitbucket.PullRequestDeclinedPayload:
 		release := value
 		app.publish.JS.Publish(repo, "PullRequestDeclinedPayload", JtoS(&release))
-		case bitbucket.PullRequestCommentCreatedPayload:
+	case bitbucket.PullRequestCommentCreatedPayload:
 		release := value
 		app.publish.JS.Publish(repo, "PullRequestCommentCreatedPayload", JtoS(&release))
-		case bitbucket.PullRequestCommentUpdatedPayload:
+	case bitbucket.PullRequestCommentUpdatedPayload:
 		release := value
 		app.publish.JS.Publish(repo, "PullRequestCommentUpdatedPayload", JtoS(&release))
-		case bitbucket.PullRequestCommentDeletedPayload:
+	case bitbucket.PullRequestCommentDeletedPayload:
 		release := value
 		app.publish.JS.Publish(repo, "PullRequestCommentDeletedPayload", JtoS(&release))
 	}
