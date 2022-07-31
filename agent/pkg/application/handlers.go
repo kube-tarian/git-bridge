@@ -1,7 +1,6 @@
 package application
 
 import (
-	"io/ioutil"
 	"log"
 
 	"github.com/gin-gonic/gin"
@@ -9,7 +8,7 @@ import (
 
 func (app *Application) giteaHandler(c *gin.Context) {
 	repo := "Gitea"
-	jsonData, err := ioutil.ReadAll(c.Request.Body)
+	jsonData, err := c.GetRawData()
 	if err != nil {
 		log.Println("Error Reading Request Body")
 	}
@@ -17,8 +16,9 @@ func (app *Application) giteaHandler(c *gin.Context) {
 }
 
 func (app *Application) azureHandler(c *gin.Context) {
+
 	repo := "Azure"
-	jsonData, err := ioutil.ReadAll(c.Request.Body)
+	jsonData, err := c.GetRawData()
 	if err != nil {
 		log.Println("Error Reading Request Body")
 	}
@@ -28,7 +28,7 @@ func (app *Application) azureHandler(c *gin.Context) {
 //githubHandler handles the github webhooks post requests.
 func (app *Application) githubHandler(c *gin.Context) {
 	repo := "Github"
-	jsonData, err := ioutil.ReadAll(c.Request.Body)
+	jsonData, err := c.GetRawData()
 	if err != nil {
 		log.Println("Error Reading Request Body")
 	}
@@ -38,7 +38,7 @@ func (app *Application) githubHandler(c *gin.Context) {
 //gitlabHandler handles the github webhooks post requests.
 func (app *Application) gitlabHandler(c *gin.Context) {
 	repo := "Gitlab"
-	jsonData, err := ioutil.ReadAll(c.Request.Body)
+	jsonData, err := c.GetRawData()
 	if err != nil {
 		log.Println("Error Reading Request Body")
 	}
@@ -48,7 +48,7 @@ func (app *Application) gitlabHandler(c *gin.Context) {
 //bitBucketHandler handles the github webhooks post requests.
 func (app *Application) bitBucketHandler(c *gin.Context) {
 	repo := "BitBucket"
-	jsonData, err := ioutil.ReadAll(c.Request.Body)
+	jsonData, err := c.GetRawData()
 	if err != nil {
 		log.Println("Error Reading Request Body")
 	}
