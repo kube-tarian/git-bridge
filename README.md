@@ -1,4 +1,4 @@
-<p align="center"><img src="git-bridge-1.png" width="360"></p>
+<p align="center"><img src="git-bridge-1.png" width="100"></p>
 <p align="center"><b>Universal connector for Git platforms</b></p>
 
 <hr>
