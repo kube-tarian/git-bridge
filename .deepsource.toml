@@ -52,3 +52,4 @@ enabled = true
 
   [analyzers.meta]
   import_root = "github.com/kube-tarian/git-bridge"
+  dependencies_vendored = true
