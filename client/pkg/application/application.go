@@ -42,12 +42,13 @@ func New(conf *config.Config, conn *clients.NATSContext, dbClient *clickhouse.DB
 func (app *Application) Routes() *httprouter.Router {
 	router := httprouter.New()
 
-	router.HandlerFunc(http.MethodPost, "/status", app.status)
+	router.HandlerFunc(http.MethodGet, "/status", app.status)
 	return router
 }
 
 func (app *Application) status(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
+	w.Write([]byte("Client is working"))
 }
 
 func (app *Application) Start() {

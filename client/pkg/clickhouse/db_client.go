@@ -1,10 +1,11 @@
 package clickhouse
 
 import (
-	"github.com/kube-tarian/git-bridge/client/pkg/config"
 	"context"
 	"fmt"
 	"log"
+
+	"github.com/kube-tarian/git-bridge/client/pkg/config"
 
 	"github.com/ClickHouse/clickhouse-go/v2/lib/driver"
 
@@ -76,12 +77,17 @@ func NewDBClient(conf *config.Config) (*DBClient, error) {
 		fmt.Printf("name: %s, value: %s, type=%s\n", s.Name, s.Value, s.Type)
 	}
 
+	const dbCreate = `CREATE DATABASE IF NOT EXISTS test;`
+	if err := conn.Exec(context.Background(), dbCreate); err != nil {
+		return nil, err
+	}
+
 	const ddlSetExperimental = `SET allow_experimental_object_type=1;`
 	if err := conn.Exec(context.Background(), ddlSetExperimental); err != nil {
 		return nil, err
 	}
 
-	const ddl = `CREATE table github_json(event JSON) ENGINE = MergeTree ORDER BY tuple();`
+	const ddl = `CREATE table IF NOT EXISTS git_json(event JSON) ENGINE = MergeTree ORDER BY tuple();`
 	if err := conn.Exec(context.Background(), ddl); err != nil {
 		return nil, err
 	}
@@ -91,7 +97,7 @@ func NewDBClient(conf *config.Config) (*DBClient, error) {
 
 func (c *DBClient) InsertEvent(metrics string) {
 	log.Printf("Inserting event: %v", metrics)
-	insertStmt := fmt.Sprintf("INSERT INTO github_json FORMAT JSONAsObject %v", metrics)
+	insertStmt := fmt.Sprintf("INSERT INTO git_json FORMAT JSONAsObject %v", metrics)
 	if err := c.conn.Exec(context.Background(), insertStmt); err != nil {
 		log.Printf("Insert failed, %v", err)
 	}
