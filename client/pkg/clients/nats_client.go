@@ -1,10 +1,12 @@
 package clients
 
 import (
-	"github.com/kube-tarian/git-bridge/client/pkg/clickhouse"
-	"github.com/kube-tarian/git-bridge/client/pkg/config"
+	"encoding/json"
 	"log"
 	"time"
+
+	"github.com/kube-tarian/git-bridge/client/pkg/clickhouse"
+	"github.com/kube-tarian/git-bridge/client/pkg/config"
 
 	"github.com/nats-io/nats.go"
 )
@@ -69,17 +71,28 @@ func (n *NATSContext) Close() {
 	n.conn.Close()
 }
 
+type pubData struct {
+	Metrics json.RawMessage `json:"metrics"`
+	Repo    string          `json:"repo"`
+}
+
 func (n *NATSContext) Subscribe(subject string, consumer string, conn *clickhouse.DBClient) {
 	n.stream.Subscribe(subject, func(msg *nats.Msg) {
 		msg.Ack()
+		repo := msg.Header.Get("repo")
+		metrics := &pubData{
+			Metrics: json.RawMessage(msg.Data),
+			Repo:    repo,
+		}
 		// metrics := &models.Gitevent{}
-		// err := json.Unmarshal(msg.Data, metrics)
-		// if err != nil {
-		// 	log.Fatal(err)
-		// }
+		data, err := json.Marshal(metrics)
+		if err != nil {
+			log.Fatal(err)
 
-		conn.InsertEvent(string(msg.Data))
-		log.Println("Inserted metrics:", string(msg.Data))
+		}
+
+		conn.InsertEvent(string(data))
+		log.Println("Inserted metrics:", string(data))
 
 	}, nats.Durable(consumer), nats.ManualAck())
 
