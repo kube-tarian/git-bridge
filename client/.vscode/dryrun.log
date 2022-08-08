@@ -1,5 +1,6 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/vijesh/go/src/github.com/git-bridge/client'
-export DB_ADDRESS="127.0.0.1" && export DB_PORT="9000" && export NATS_TOKEN="UfmrJOYwYCCsgQvxvcfJ3BdI6c8WBbnD" && export NATS_ADDRESS="nats://localhost:4222" && go run .
 make: Leaving directory '/home/vijesh/go/src/github.com/git-bridge/client'
  
+make: *** No targets specified and no makefile found.  Stop.
+

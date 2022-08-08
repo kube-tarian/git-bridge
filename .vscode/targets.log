@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Jul 14 10:25:54 2022
+# Make data base, printed on Sun Jul 31 11:42:18 2022
 
 # Variables
 
@@ -14,6 +14,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 LC_ALL = C
 # environment
 PULSE_SERVER = /mnt/wslg/PulseServer
+# environment
+HOMEBREW_PREFIX = /home/linuxbrew/.linuxbrew
 # environment
 WSLENV = ELECTRON_RUN_AS_NODE/w:
 # environment
@@ -46,6 +48,8 @@ OLDPWD = /mnt/c/Users/vijes/AppData/Local/Programs/Microsoft VS Code
 LANG = C
 # default
 .LOADED := 
+# environment
+HOMEBREW_REPOSITORY = /home/linuxbrew/.linuxbrew/Homebrew
 # default
 .INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
 # makefile
@@ -53,7 +57,7 @@ MAKEFLAGS = pqrR
 # makefile
 CURDIR := /home/vijesh/go/src/github.com/git-bridge
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
@@ -66,8 +70,8 @@ WAYLAND_DISPLAY = wayland-0
 +D = $(patsubst %/,%,$(dir $+))
 # environment
 P9K_SSH = 0
-# makefile
-MAKEFILE_LIST := 
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
@@ -76,6 +80,8 @@ ZSH = /home/vijesh/.oh-my-zsh
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
 *F = $(notdir $*)
+# environment
+MANPATH = /home/linuxbrew/.linuxbrew/share/man::
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # environment
@@ -84,6 +90,8 @@ P9K_TTY = old
 VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+INFOPATH = /home/linuxbrew/.linuxbrew/share/info:
 # makefile
 SHELL = /bin/sh
 # default
@@ -95,7 +103,7 @@ MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = /usr/local/go/bin:/home/vijesh/.vscode-server/bin/92d25e35d9bf1a6b16f7d0758f25d48ace11e5b9/bin/remote-cli:/home/vijesh/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/windows/system32:/mnt/c/windows:/mnt/c/windows/System32/Wbem:/mnt/c/windows/System32/WindowsPowerShell/v1.0/:/mnt/c/windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files (x86)/Calibre2/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/Go/bin:/mnt/c/TDM-GCC-64/bin:/mnt/c/MinGW/bin:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files/tdm/bin:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin:/mnt/c/Users/vijes/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/vijes/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/vijes/AppData/Roaming/npm:/mnt/c/Users/vijes/go/bin:/mnt/c/FFmpeg/bin:/mnt/c/Program Files/PostgreSQL/14/bin:/mnt/c/Program Files/JetBrains/GoLand 2022.1.3/bin
+PATH = /usr/local/go/bin:/home/vijesh/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/bin/remote-cli:/home/vijesh/go/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/home/vijesh/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/windows/system32:/mnt/c/windows:/mnt/c/windows/System32/Wbem:/mnt/c/windows/System32/WindowsPowerShell/v1.0/:/mnt/c/windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files (x86)/Calibre2/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/Go/bin:/mnt/c/TDM-GCC-64/bin:/mnt/c/MinGW/bin:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files/tdm/bin:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin:/mnt/c/Users/vijes/.cargo/bin:/mnt/c/Users/vijes/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/vijes/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/vijes/AppData/Roaming/npm:/mnt/c/Users/vijes/go/bin:/mnt/c/FFmpeg/bin:/mnt/c/Program Files/PostgreSQL/14/bin:/mnt/c/Program Files/JetBrains/GoLand 2022.1.3/bin
 # default
 MAKEFILES := 
 # automatic
@@ -115,7 +123,7 @@ LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:
 # environment
 LESS = -R
 # environment
-WSL_INTEROP = /run/WSL/13545_interop
+WSL_INTEROP = /run/WSL/7482_interop
 # 'override' directive
 GNUMAKEFLAGS := 
 # environment
@@ -123,7 +131,7 @@ LOGNAME = vijesh
 # environment
 VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/vijes/.vscode/extensions/ms-vscode-remote.remote-wsl-0.66.3
 # makefile
-.DEFAULT_GOAL := 
+.DEFAULT_GOAL := start-docker-compose
 # environment
 DISPLAY = :0
 # environment
@@ -131,13 +139,15 @@ USER = vijesh
 # default
 MAKE_VERSION := 4.3
 # environment
+HOMEBREW_CELLAR = /home/linuxbrew/.linuxbrew/Cellar
+# environment
 PAGER = less
 # environment
 _ = /mnt/c/Users/vijes/AppData/Local/Programs/Microsoft VS Code/bin/code
 # environment
 XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-5f6cd3a0-8ead-41bd-a125-cbbd7871728f.sock
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-88ad47fd-1eb0-4e67-98f6-e400dd45eefd.sock
 # environment
 GOMODCACHE = /home/vijesh/go/pkg/mod
 # environment
@@ -157,13 +167,13 @@ GOPROXY = https://proxy.golang.org,direct
 # default
 SUFFIXES := 
 # environment
-_P9K_TTY = /dev/pts/3
+_P9K_TTY = /dev/pts/1
 # environment
 WSL_DISTRO_NAME = Ubuntu-20.04
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
 # variable set hash-table stats:
-# Load=76/1024=7%, Rehash=0, Collisions=1/103=1%
+# Load=81/1024=8%, Rehash=0, Collisions=7/111=6%
 
 # Pattern-specific Variable Values
 
@@ -171,9 +181,9 @@ WSL_DISTRO_NAME = Ubuntu-20.04
 
 # Directories
 
-# . (device 2112, inode 474633): 10 files, no impossibilities.
+# . (device 2080, inode 474633): 14 files, no impossibilities.
 
-# 10 files, no impossibilities in 1 directories.
+# 14 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -184,9 +194,16 @@ WSL_DISTRO_NAME = Ubuntu-20.04
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  File does not exist.
+#  Last modified 2022-07-29 14:04:45
 #  File has been updated.
-#  Failed to be updated.
+#  Successfully updated.
+
+start-docker-compose:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 2):
+	env GITLAB_HOME=./gitlab-repo-server docker compose up -d --no-recreate
 
 # Not a target:
 .DEFAULT:
@@ -201,35 +218,28 @@ all:
 #  File does not exist.
 #  File has not been updated.
 
-# Not a target:
-makefile:
-#  Implicit rule search has been done.
-#  File does not exist.
-#  File has been updated.
-#  Failed to be updated.
-
-# Not a target:
-GNUmakefile:
-#  Implicit rule search has been done.
-#  File does not exist.
-#  File has been updated.
-#  Failed to be updated.
+stop-docker-compose:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 5):
+	docker compose down -v
 
 # files hash-table stats:
-# Load=6/1024=1%, Rehash=0, Collisions=0/15=0%
+# Load=6/1024=1%, Rehash=0, Collisions=0/16=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 18 / storage = 159 B / avg = 8 B
-# current buf: size = 8162 B / used = 159 B / count = 18 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 21 / storage = 221 B / avg = 10 B
+# current buf: size = 8162 B / used = 221 B / count = 21 / avg = 10 B
 
-# strcache performance: lookups = 21 / hit rate = 14%
+# strcache performance: lookups = 27 / hit rate = 22%
 # hash-table stats:
-# Load=18/8192=0%, Rehash=0, Collisions=0/21=0%
-# Finished Make data base on Thu Jul 14 10:25:54 2022
+# Load=21/8192=0%, Rehash=0, Collisions=0/27=0%
+# Finished Make data base on Sun Jul 31 11:42:18 2022
 
  
 make: *** No rule to make target 'all'.  Stop.

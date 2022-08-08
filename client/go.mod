@@ -1,17 +1,17 @@
-module github.com/kube-tarian/git-bridge
+module github.com/kube-tarian/git-bridge/client
 
 go 1.18
 
 require (
+	github.com/ClickHouse/clickhouse-go/v2 v2.2.0
+	github.com/julienschmidt/httprouter v1.3.0
+	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/nats-io/nats.go v1.16.0
-	gorm.io/driver/clickhouse v0.4.2
-	gorm.io/gorm v1.23.8
+	gorm.io/gorm v1.23.7
 )
 
 require (
-	github.com/ClickHouse/clickhouse-go/v2 v2.2.0 // indirect
 	github.com/google/uuid v1.3.0 // indirect
-	github.com/hashicorp/go-version v1.6.0 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/nats-io/nats-server/v2 v2.8.4 // indirect
