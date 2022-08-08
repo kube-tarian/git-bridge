@@ -1,0 +1,318 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 1,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 12,
+      "panels": [
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "displayMode": "auto"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 24,
+            "x": 0,
+            "y": 1
+          },
+          "id": 14,
+          "options": {
+            "showHeader": true
+          },
+          "pluginVersion": "8.2.0",
+          "targets": [
+            {
+              "format": 1,
+              "meta": {
+                "builderOptions": {
+                  "fields": [],
+                  "limit": 100,
+                  "mode": "list"
+                }
+              },
+              "queryType": "sql",
+              "rawSql": "select event.metrics.after as Hashid,\r\nevent.metrics.user_username as PushedBy,\r\nevent.metrics.project.name as RepoName,\r\nevent.metrics.commits.message[1] as message\r\nfrom test.git_json where event.repo =='Gitlab' and event.metrics.event_name !='' SETTINGS describe_extend_object_types=1;",
+              "refId": "A"
+            }
+          ],
+          "title": "Gitlab Push Event",
+          "type": "table"
+        }
+      ],
+      "title": "gitlab",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "id": 8,
+      "panels": [
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "displayMode": "auto"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 24,
+            "x": 0,
+            "y": 1
+          },
+          "id": 10,
+          "options": {
+            "showHeader": true
+          },
+          "pluginVersion": "8.2.0",
+          "targets": [
+            {
+              "format": 1,
+              "meta": {
+                "builderOptions": {
+                  "fields": [],
+                  "limit": 100,
+                  "mode": "list"
+                }
+              },
+              "queryType": "sql",
+              "rawSql": "select event.metrics.after as hashid,\r\nevent.metrics.repository.name as repo,\r\nevent.metrics.commits.committer.name[1] as committer,\r\nevent.metrics.commits.message[1] as message,\r\nevent.metrics.commits.timestamp as time\r\nfrom test.git_json where event.repo =='Gitea' and event.repo != 'Github' SETTINGS describe_extend_object_types=1;",
+              "refId": "A"
+            }
+          ],
+          "title": "Gitea push event",
+          "type": "table"
+        }
+      ],
+      "title": "Gitea",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 2
+      },
+      "id": 2,
+      "panels": [
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "displayMode": "auto"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 24,
+            "x": 0,
+            "y": 11
+          },
+          "id": 4,
+          "options": {
+            "showHeader": true
+          },
+          "pluginVersion": "8.2.0",
+          "targets": [
+            {
+              "format": 1,
+              "meta": {
+                "builderOptions": {
+                  "fields": [],
+                  "limit": 100,
+                  "mode": "list"
+                }
+              },
+              "queryType": "sql",
+              "rawSql": "select event.metrics.after as hashid, \r\nevent.metrics.repository.name as repo, \r\nevent.metrics.commits.committer.name[1] as committer, \r\nevent.metrics.commits.message[1] as message,\r\nevent.metrics.repository.updated_at as time \r\nfrom test.git_json where event.repo == 'Github' and event.metrics.commits.committer.name[1] != ''  SETTINGS describe_extend_object_types=1;",
+              "refId": "A"
+            }
+          ],
+          "title": "github pushevent",
+          "type": "table"
+        },
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "displayMode": "auto"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 24,
+            "x": 0,
+            "y": 19
+          },
+          "id": 6,
+          "options": {
+            "showHeader": true
+          },
+          "pluginVersion": "8.2.0",
+          "targets": [
+            {
+              "format": 1,
+              "meta": {
+                "builderOptions": {
+                  "fields": [],
+                  "limit": 100,
+                  "mode": "list"
+                }
+              },
+              "queryType": "sql",
+              "rawSql": "select event.metrics.pull_request.head.sha as hashid,\r\nevent.metrics.pull_request.state as pullreqstate, \r\nevent.metrics.pull_request.created_at as time,\r\nevent.metrics.pull_request.user.login as author, \r\nevent.metrics.pull_request.base.repo.owner.login as owner,\r\nevent.metrics.pull_request.body as message \r\nfrom test.git_json where event.repo == 'Github' and event.metrics.pull_request.head.sha !=''  SETTINGS describe_extend_object_types=1;",
+              "refId": "A"
+            }
+          ],
+          "title": "pull request ",
+          "type": "table"
+        }
+      ],
+      "title": "github",
+      "type": "row"
+    }
+  ],
+  "schemaVersion": 31,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "github",
+  "uid": "L38IxPkVk",
+  "version": 2
+}
