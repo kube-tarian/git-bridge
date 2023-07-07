@@ -61,8 +61,8 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: ./agent
-          file: ./Dockerfile
+          context: .
+          file: ./agent/Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -74,8 +74,8 @@ jobs:
         uses: docker/build-push-action@v4
         if: github.event_name == 'pull_request'
         with:
-          context: ./agent
-          file: ./Dockerfile
+          context: .
+          file: ./agent/Dockerfile
           push: false
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE }}:pr-${{ github.event.pull_request.number }}
           labels: ${{ steps.meta.outputs.labels }}
