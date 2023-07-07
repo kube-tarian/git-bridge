@@ -1,105 +1,105 @@
-version: "3"
+version: '3'
 
 services:
-  # web:
-  #   image: 'gitlab/gitlab-ee:latest'
-  #   restart: always
-  #   # hostname: 'gitlab.example.com'
-  #   # environment:
-  #   #   GITLAB_OMNIBUS_CONFIG: |
-  #   #     external_url 'https://gitlab.example.com'
-  #       # Add any other gitlab.rb configuration here, each on its own line
-  #   ports:
-  #     - '80:80'
-  #     - '443:443'
-  #     - '2222:22'
-  #   volumes:
-  #     - '$GITLAB_HOME/config:/etc/gitlab'
-  #     - '$GITLAB_HOME/logs:/var/log/gitlab'
-  #     - '$GITLAB_HOME/data:/var/opt/gitlab'
-  #   shm_size: '256m'
-  #   networks:
-  #       - ch_ntw
+    # web:
+    #   image: 'gitlab/gitlab-ee:latest'
+    #   restart: always
+    #   # hostname: 'gitlab.example.com'
+    #   # environment:
+    #   #   GITLAB_OMNIBUS_CONFIG: |
+    #   #     external_url 'https://gitlab.example.com'
+    #       # Add any other gitlab.rb configuration here, each on its own line
+    #   ports:
+    #     - '80:80'
+    #     - '443:443'
+    #     - '2222:22'
+    #   volumes:
+    #     - '$GITLAB_HOME/config:/etc/gitlab'
+    #     - '$GITLAB_HOME/logs:/var/log/gitlab'
+    #     - '$GITLAB_HOME/data:/var/opt/gitlab'
+    #   shm_size: '256m'
+    #   networks:
+    #       - ch_ntw
 
-  ch_server:
-    image: clickhouse/clickhouse-server:22.6
-    ports:
-      - "8123:8123"
-      - "9000:9000"
-    volumes:
-      - ./db:/var/lib/clickhouse
-    networks:
-      - ch_ntw
+    ch_server:
+        image: clickhouse/clickhouse-server:22.6
+        ports:
+            - '8123:8123'
+            - '9000:9000'
+        volumes:
+            - ./db:/var/lib/clickhouse
+        networks:
+            - ch_ntw
 
-  # ch_client:
-  #   image: yandex/clickhouse-client
-  #   entrypoint:
-  #     - /bin/sleep
-  #   command:
-  #     - infinity
-  #   networks:
-  #       - ch_ntw
+    # ch_client:
+    #   image: yandex/clickhouse-client
+    #   entrypoint:
+    #     - /bin/sleep
+    #   command:
+    #     - infinity
+    #   networks:
+    #       - ch_ntw
 
-  nats:
-    image: nats:latest
-    command:
-      - "--jetstream"
-      - "--http_port"
-      - "8222"
-    environment:
-      NATS_HTTP_PORT_NUMBER: 8222
-    expose:
-      - "4222"
-    ports:
-      - "8222:8222"
-    networks:
-      - ch_ntw
+    nats:
+        image: nats:latest
+        command:
+            - '--jetstream'
+            - '--http_port'
+            - '8222'
+        environment:
+            NATS_HTTP_PORT_NUMBER: 8222
+        expose:
+            - '4222'
+        ports:
+            - '8222:8222'
+        networks:
+            - ch_ntw
 
-  grafana:
-    image: grafana/grafana-enterprise:8.2.0
-    ports:
-      - 3000:3000
-    networks:
-      - ch_ntw
+    grafana:
+        image: grafana/grafana
+        ports:
+            - 3000:3000
+        networks:
+            - ch_ntw
 
-  agent:
-    entrypoint: "/git-bridge"
-    build: ./agent/
-    restart: always
-    environment:
-      NATS_TOKEN: "UfmrJOYwYCCsgQvxvcfJ3BdI6c8WBbnD"
-      NATS_ADDRESS: "nats://nats:4222"
-      PORT: "8090"
-      STREAM_NAME: "GITMETRICS"
-    ports:
-      - "8090:8090"
-    # depends_on:
-    #   web:
-    #     condition: service_healthy
-    networks:
-      - ch_ntw
+    agent:
+        entrypoint: '/git-bridge'
+        build: ./agent/
+        restart: always
+        environment:
+            NATS_TOKEN: 'UfmrJOYwYCCsgQvxvcfJ3BdI6c8WBbnD'
+            NATS_ADDRESS: 'nats://nats:4222'
+            PORT: '8090'
+            STREAM_NAME: 'GITMETRICS'
+        ports:
+            - '8090:8090'
+        # depends_on:
+        #   web:
+        #     condition: service_healthy
+        networks:
+            - ch_ntw
 
-  client:
-    entrypoint: "/client"
-    build: ./client/
-    restart: always
-    environment:
-      NATS_TOKEN: "UfmrJOYwYCCsgQvxvcfJ3BdI6c8WBbnD"
-      NATS_ADDRESS: "nats://nats:4222"
-      DB_ADDRESS: "ch_server:9000"
-      PORT: "8091"
-      STREAM_NAME: "GITMETRICS"
-    ports:
-      - "8091:8091"
-    # depends_on:
-    #   web:
-    #     condition: service_healthy
-    networks:
-      - ch_ntw
+    client:
+        entrypoint: '/client'
+        build: ./client/
+        restart: always
+        environment:
+            NATS_TOKEN: 'UfmrJOYwYCCsgQvxvcfJ3BdI6c8WBbnD'
+            NATS_ADDRESS: 'nats://nats:4222'
+            DB_ADDRESS: 'ch_server:9000'
+            PORT: '8091'
+            STREAM_NAME: 'GITMETRICS'
+        ports:
+            - '8091:8091'
+        # depends_on:
+        #   web:
+        #     condition: service_healthy
+        networks:
+            - ch_ntw
 
 networks:
-  ch_ntw:
-    driver: bridge
-    # ipam:
-    #   config:
-    #     - subnet: 10.222.1.0/24
+    ch_ntw:
+        driver: bridge
+        # ipam:
+        #   config:
+        #     - subnet: 10.222.1.0/24

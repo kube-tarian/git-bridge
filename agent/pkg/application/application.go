@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/kube-tarian/git-bridge/agent/api"
 	"github.com/kube-tarian/git-bridge/agent/pkg/clients"
 	"github.com/kube-tarian/git-bridge/agent/pkg/config"
 
@@ -38,12 +39,7 @@ func New(conf *config.Config, conn *clients.NATSContext) *Application {
 
 func (app *Application) Routes() *gin.Engine {
 	router := gin.New()
-
-	router.POST("/github", app.githubHandler)
-	router.POST("/gitlab", app.gitlabHandler)
-	router.POST("/bitbucket", app.bitBucketHandler)
-	router.POST("/azure", app.azureHandler)
-	router.POST("/gitea", app.giteaHandler)
+	api.RegisterHandlers(router, app)
 	return router
 }
 

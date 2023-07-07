@@ -35,9 +35,9 @@ func NewDBClient(conf *config.Config) (*DBClient, error) {
 	log.Println("Initializing DB client")
 	conn, err := clickhouse.Open(&clickhouse.Options{
 		Addr: []string{conf.DBAddress},
-		Auth: clickhouse.Auth{
-			Database: "test",
-		},
+		// Auth: clickhouse.Auth{
+		// 	Database: "test",
+		// },
 		// Auth: clickhouse.Auth{
 		// 	Database: "default",
 		// 	Username: "default",

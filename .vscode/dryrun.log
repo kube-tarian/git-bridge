@@ -1,5 +1,5 @@
 make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/vijesh/go/src/github.com/git-bridge'
+make: Entering directory `/Users/vijeshdeepan/Desktop/finals/kubviz-integration/git-bridge'
 env GITLAB_HOME=./gitlab-repo-server docker compose up -d --no-recreate
-make: Leaving directory '/home/vijesh/go/src/github.com/git-bridge'
+make: Leaving directory `/Users/vijeshdeepan/Desktop/finals/kubviz-integration/git-bridge'
  

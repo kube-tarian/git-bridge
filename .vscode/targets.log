@@ -1,179 +1,160 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-# GNU Make 4.3
-# Built for x86_64-pc-linux-gnu
-# Copyright (C) 1988-2020 Free Software Foundation, Inc.
-# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
-# This is free software: you are free to change and redistribute it.
-# There is NO WARRANTY, to the extent permitted by law.
+# GNU Make 3.81
+# Copyright (C) 2006  Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.
+# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
 
-# Make data base, printed on Sun Jul 31 11:42:18 2022
+# This program built for i386-apple-darwin11.3.0
+
+# Make data base, printed on Fri Jul  7 14:35:49 2023
 
 # Variables
 
-# environment
-LC_ALL = C
-# environment
-PULSE_SERVER = /mnt/wslg/PulseServer
-# environment
-HOMEBREW_PREFIX = /home/linuxbrew/.linuxbrew
-# environment
-WSLENV = ELECTRON_RUN_AS_NODE/w:
-# environment
-VSCODE_CWD = /mnt/c/Users/vijes/AppData/Local/Programs/Microsoft VS Code
-# default
-MAKE_COMMAND := make
-# environment
-VSCODE_HANDLES_SIGPIPE = true
-# environment
-GOPATH = /home/vijesh/go
 # automatic
-@D = $(patsubst %/,%,$(dir $@))
-# environment
-VSCODE_HANDLES_UNCAUGHT_ERRORS = true
-# default
-.VARIABLES := 
-# environment
-PWD = /home/vijesh/go/src/github.com/git-bridge
+<D = $(patsubst %/,%,$(dir $<))
 # automatic
-%D = $(patsubst %/,%,$(dir $%))
+?F = $(notdir $?)
 # environment
-LSCOLORS = Gxfxcxdxbxegedabagacad
-# environment
-OLDPWD = /mnt/c/Users/vijes/AppData/Local/Programs/Microsoft VS Code
-# automatic
-^D = $(patsubst %/,%,$(dir $^))
-# automatic
-%F = $(notdir $%)
-# environment
-LANG = C
-# default
-.LOADED := 
-# environment
-HOMEBREW_REPOSITORY = /home/linuxbrew/.linuxbrew/Homebrew
-# default
-.INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
-# makefile
-MAKEFLAGS = pqrR
-# makefile
-CURDIR := /home/vijesh/go/src/github.com/git-bridge
-# environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
-# automatic
-*D = $(patsubst %/,%,$(dir $*))
-# environment
-MFLAGS = -pqrR
-# default
-.SHELLFLAGS := -c
-# environment
-WAYLAND_DISPLAY = wayland-0
-# automatic
-+D = $(patsubst %/,%,$(dir $+))
-# environment
-P9K_SSH = 0
-# makefile (from 'Makefile', line 1)
-MAKEFILE_LIST := Makefile
-# automatic
-@F = $(notdir $@)
-# environment
-ZSH = /home/vijesh/.oh-my-zsh
+VSCODE_CRASH_REPORTER_PROCESS_TYPE = extensionHost
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
-*F = $(notdir $*)
-# environment
-MANPATH = /home/linuxbrew/.linuxbrew/share/man::
+@D = $(patsubst %/,%,$(dir $@))
 # automatic
-<D = $(patsubst %/,%,$(dir $<))
-# environment
-P9K_TTY = old
-# environment
-VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
-# default
-MAKE_HOST := x86_64-pc-linux-gnu
-# environment
-INFOPATH = /home/linuxbrew/.linuxbrew/share/info:
+@F = $(notdir $@)
+# makefile
+CURDIR := /Users/vijeshdeepan/Desktop/finals/kubviz-integration/git-bridge
 # makefile
 SHELL = /bin/sh
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-gb","osLocale":"en-in","availableLanguages":{},"_languagePackSupport":true}
+# environment
+_ = /usr/bin/make
+# makefile (from `Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+__CFBundleIdentifier = com.microsoft.VSCode
+# environment
+INFOPATH = /opt/homebrew/share/info:
+# environment
+VSCODE_CWD = /
+# environment
+GOPROXY = https://proxy.golang.org,direct
+# environment
+PATH = /usr/local/go/bin:/Users/vijeshdeepan/Library/Application Support/cloud-code/installer/google-cloud-sdk/bin:/Users/vijeshdeepan/go/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/vijeshdeepan/.cargo/bin:/Users/vijeshdeepan/go/bin:/Users/vijeshdeepan/go/bin:/Users/vijeshdeepan/google-cloud-sdk/bin
+# environment
+GOPATH = /Users/vijeshdeepan/go
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+KUBECONFIG = /Users/vijeshdeepan/.kube/dev-config
+# default
+.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
+# environment
+CLOUDSDK_METRICS_ENVIRONMENT = cloudcode.vscode
+# environment
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.O2mVyLuW2k/Listeners
+# automatic
+%F = $(notdir $%)
+# environment
+GOBIN = /Users/vijeshdeepan/go/bin
+# environment
+CLOUDSDK_METRICS_ENVIRONMENT_VERSION = 1.21.8
+# environment
+PWD = /Users/vijeshdeepan/Desktop/finals/kubviz-integration/git-bridge
+# environment
+HOMEBREW_CELLAR = /opt/homebrew/Cellar
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# environment
+MANPATH = /opt/homebrew/share/man::
+# environment
+GOMODCACHE = /Users/vijeshdeepan/go/pkg/mod
+# environment
+HOME = /Users/vijeshdeepan
+# default
+MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
+# environment
+VSCODE_CODE_CACHE_PATH = /Users/vijeshdeepan/Library/Application Support/Code/CachedData/695af097c7bd098fbf017ce3ac85e09bbc5dda06
+# environment
+LOGNAME = vijeshdeepan
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+XPC_FLAGS = 0x0
+# default
+MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
 # environment
 SHLVL = 1
-# environment
-MAKELEVEL := 0
 # default
-MAKE = $(MAKE_COMMAND)
+MAKE_VERSION := 3.81
 # environment
-PATH = /usr/local/go/bin:/home/vijesh/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/bin/remote-cli:/home/vijesh/go/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/home/vijesh/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/windows/system32:/mnt/c/windows:/mnt/c/windows/System32/Wbem:/mnt/c/windows/System32/WindowsPowerShell/v1.0/:/mnt/c/windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files (x86)/Calibre2/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/Go/bin:/mnt/c/TDM-GCC-64/bin:/mnt/c/MinGW/bin:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files/tdm/bin:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin:/mnt/c/Users/vijes/.cargo/bin:/mnt/c/Users/vijes/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/vijes/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/vijes/AppData/Roaming/npm:/mnt/c/Users/vijes/go/bin:/mnt/c/FFmpeg/bin:/mnt/c/Program Files/PostgreSQL/14/bin:/mnt/c/Program Files/JetBrains/GoLand 2022.1.3/bin
-# default
-MAKEFILES := 
-# automatic
-^F = $(notdir $^)
-# environment
-GOROOT = /usr/local/go
-# automatic
-?F = $(notdir $?)
-# environment
-NAME = Code
-# environment
-HOSTTYPE = x86_64
-# environment
-LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
-# automatic
-+F = $(notdir $+)
-# environment
-LESS = -R
-# environment
-WSL_INTEROP = /run/WSL/7482_interop
-# 'override' directive
-GNUMAKEFLAGS := 
-# environment
-LOGNAME = vijesh
-# environment
-VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/vijes/.vscode/extensions/ms-vscode-remote.remote-wsl-0.66.3
+USER = vijeshdeepan
 # makefile
 .DEFAULT_GOAL := start-docker-compose
 # environment
-DISPLAY = :0
-# environment
-USER = vijesh
+GOROOT = /usr/local/go
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
 # default
-MAKE_VERSION := 4.3
-# environment
-HOMEBREW_CELLAR = /home/linuxbrew/.linuxbrew/Cellar
-# environment
-PAGER = less
-# environment
-_ = /mnt/c/Users/vijes/AppData/Local/Programs/Microsoft VS Code/bin/code
-# environment
-XDG_RUNTIME_DIR = /mnt/wslg/runtime-dir
-# environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-88ad47fd-1eb0-4e67-98f6-e400dd45eefd.sock
-# environment
-GOMODCACHE = /home/vijesh/go/pkg/mod
-# environment
-VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
-# environment
-HOME = /home/vijesh
-# environment
-ELECTRON_RUN_AS_NODE = 1
-# environment
-TERM = xterm-256color
-# environment
-GOPROXY = https://proxy.golang.org,direct
+MAKE_COMMAND := /Library/Developer/CommandLineTools/usr/bin/make
 # default
-.RECIPEPREFIX := 
+.VARIABLES := 
+# environment
+TMPDIR = /var/folders/hv/q8h1w7pj2r77zr_v_wjbwj780000gn/T/
+# automatic
+*F = $(notdir $*)
+# environment
+VSCODE_IPC_HOOK = /Users/vijeshdeepan/Library/Application Support/Code/1.79-main.sock
+# environment
+MallocNanoZone = 0
+# makefile
+MAKEFLAGS = Rrqp
+# environment
+MFLAGS = -Rrqp
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.28708015.28708021
+# environment
+HOMEBREW_PREFIX = /opt/homebrew
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# automatic
++F = $(notdir $+)
+# environment
+HOMEBREW_REPOSITORY = /opt/homebrew
+# environment
+__CF_USER_TEXT_ENCODING = 0x1F5:0x0:0x0
+# environment
+COMMAND_MODE = unix2003
+# default
+MAKEFILES := 
 # automatic
 <F = $(notdir $<)
+# environment
+LC_ALL = C
+# automatic
+^F = $(notdir $^)
 # default
 SUFFIXES := 
 # environment
-_P9K_TTY = /dev/pts/1
+MAKELEVEL := 0
 # environment
-WSL_DISTRO_NAME = Ubuntu-20.04
-# default
-.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
+LANG = C
+# environment
+VSCODE_PID = 96176
 # variable set hash-table stats:
-# Load=81/1024=8%, Rehash=0, Collisions=7/111=6%
+# Load=71/1024=7%, Rehash=0, Collisions=2/94=2%
 
 # Pattern-specific Variable Values
 
@@ -181,7 +162,7 @@ WSL_DISTRO_NAME = Ubuntu-20.04
 
 # Directories
 
-# . (device 2080, inode 474633): 14 files, no impossibilities.
+# . (device 16777231, inode 28723215): 14 files, no impossibilities.
 
 # 14 files, no impossibilities in 1 directories.
 
@@ -192,18 +173,44 @@ WSL_DISTRO_NAME = Ubuntu-20.04
 # Files
 
 # Not a target:
+all:
+#  Command-line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has not been updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+stop-docker-compose:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 5):
+	docker compose down -v
+	
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-29 14:04:45
+#  Last modified 2023-07-04 10:53:17
 #  File has been updated.
 #  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 start-docker-compose:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 2):
+#  commands to execute (from `Makefile', line 2):
 	env GITLAB_HOME=./gitlab-repo-server docker compose up -d --no-recreate
+	
 
 # Not a target:
 .DEFAULT:
@@ -211,36 +218,21 @@ start-docker-compose:
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-all:
-#  Command line target.
-#  Implicit rule search has been done.
-#  File does not exist.
-#  File has not been updated.
-
-stop-docker-compose:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 5):
-	docker compose down -v
-
 # files hash-table stats:
-# Load=6/1024=1%, Rehash=0, Collisions=0/16=0%
+# Load=6/1024=1%, Rehash=0, Collisions=0/18=0%
 # VPATH Search Paths
 
-# No 'vpath' search paths.
+# No `vpath' search paths.
 
-# No general ('VPATH' variable) search path.
+# No general (`VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 21 / storage = 221 B / avg = 10 B
-# current buf: size = 8162 B / used = 221 B / count = 21 / avg = 10 B
+# # of strings in strcache: 1
+# # of strcache buffers: 1
+# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+# strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# strcache performance: lookups = 27 / hit rate = 22%
-# hash-table stats:
-# Load=21/8192=0%, Rehash=0, Collisions=0/27=0%
-# Finished Make data base on Sun Jul 31 11:42:18 2022
+# Finished Make data base on Fri Jul  7 14:35:49 2023
 
  
-make: *** No rule to make target 'all'.  Stop.
+make: *** No rule to make target `all'.  Stop.
 
